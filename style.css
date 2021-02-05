@@ -464,12 +464,19 @@ p {
   background-size: 70%;
   background-repeat: no-repeat;
   background-position: center;
+
   
+
+
 }
+
+
 
 #caracter {
   height: 18vh;
 }
+
+
 
 .card:hover #caracter {
   filter: drop-shadow(1px 1px 5px rgba(31, 30, 30, 0.678)) hue-rotate(360deg);
@@ -507,7 +514,7 @@ p {
   width: 85%;
   right: 0;
   margin-left: 35%;
-  
+
 
 
 }
