@@ -19,7 +19,7 @@
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <script src="https://unpkg.com/scroll-out/dist/scroll-out.min.js"></script>
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
-  
+
   <script>
     $(function () {
       $(".meter > span").each(function () {
@@ -200,24 +200,33 @@
     <canvas id="canv"></canvas>
   </div> -->
 
-  
   <div class="topnav" id="myTopnav">
-    <a href="#" class="active">Perfil</a>
+    <a href="#" class="active div1">
+      <img src="images/icons8-rick-sanchez.svg" style="filter: invert(); width: 30%;" alt="" srcset="">
+    </a>
     <!--  <a href="desglose.html" onclick="limpiar()">Desglose</a> -->
     <!-- <a href="#desglose">Desglose</a> -->
     <!--  <a href="/mapa.html">Mapa</a> -->
-    <a href="ayuda.html">Ayuda</a>
-    <a href="#miModal" onclick="myFunction()">Dimensiones</a>
-
-    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-      <i class="fa fa-bars"></i>
+    <a href="ayuda.html" class="div2">
+      <img src="images/info.svg" style="filter: invert(); width: 30%; " alt="" srcset="">
     </a>
+    <a href="#miModal" onclick="myFunction()" class="div3">
+      <img src="images/portal-gun.svg" style="filter: invert(); width: 30%;" alt="" srcset="">
+    </a>
+  
+    <!-- <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i>
+  </a> -->
   </div>
 
+
+
+  
+
   <br id="position">
+  <!-- <br>
   <br>
-  <br>
-  <br>
+  <br> -->
   <div data-scroll class="card2">
     <center>
       <form>
@@ -232,19 +241,19 @@
 
 
   <div id="resultado">
-    <div class="card" >
+    <div class="card">
       <br>
       <h1>
         Ingresa un ID valido
       </h1>
 
     </div>
-    
+
   </div>
 
   <br><br>
   <div class="tooltip"></div>
-
+  <br><br>
   <div id="miModal" class="modal">
     <div class="modal-contenido">
       <a href="#"><img src="images/prompt_no.png" alt=""></a>
@@ -299,7 +308,7 @@
       </div>
   
     </div> -->
-  <a id="goTop" href="#position">^</a>
+  <!-- <a id="goTop" href="#position">^</a> -->
 
   <footer id="footer">
 
@@ -501,7 +510,7 @@
       });
     }
 
-  
+
   </script>
 
   <script src="scripts/Chart.min.js"></script>

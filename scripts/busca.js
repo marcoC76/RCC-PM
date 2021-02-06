@@ -7,6 +7,7 @@ ft(appi);
 /* window.onload = inicio; */
 
 function inicio() {
+    isMobile();
     localStorage.setItem("mundo", 1);
     if (navigator.onLine) {
         // el navegador está conectado a la red
@@ -296,11 +297,11 @@ function recibir() {
                                 <center>
                                     <span class="evolution" >
                                         <img id="fmonPro0" src="images/Huevo_001.png" />
-                                        >
+                                        ⇒
                                         <img id="fmonCuest1" src="" />
-                                        >
+                                        ⇒
                                         <img id="fmonCuest2" src="" />
-                                        >
+                                        ⇒
                                         <img id="fmonCuest3" src="" />
                                     </span>
                                 </center>
@@ -338,11 +339,11 @@ function recibir() {
                             <center>
                                 <span class="evolution" >
                                     <img id="fmonPro0" src="images/Huevo_002.png" />
-                                    >
+                                    ⇒
                                     <img id="fmonAct1" src="" />
-                                    >
+                                    ⇒
                                     <img id="fmonAct2" src="" />
-                                    >
+                                    ⇒
                                     <img id="fmonAct3" src="" />
                                 </span>
                             </center>
@@ -380,11 +381,11 @@ function recibir() {
                             <center>
                                 <span class="evolution" >
                                     <img id="fmonPro0" src="images/Huevo_003.png" />
-                                    >
+                                    ⇒
                                     <img id="fmonBit1" src="" />
-                                    >
+                                    ⇒
                                     <img id="fmonBit2" src="" />
-                                    >
+                                    ⇒
                                     <img id="fmonBit3" src="" />
                                 </span>
                             </center>
@@ -424,11 +425,11 @@ function recibir() {
                             <center>
                                 <span class="evolution" >
                                     <img id="fmonPro0" src="images/Huevo_004.png" />
-                                    >
+                                    ⇒
                                     <img id="fmonPro1" src="" />
-                                    >
+                                    ⇒
                                     <img id="fmonPro2" src="" />
-                                    >
+                                    ⇒
                                     <img id="fmonPro3" src="" />
                                 </span>
                             </center>
@@ -727,7 +728,7 @@ function recibir() {
         mas = "images/fmon_5-2_min.png";
         por = "2";
         por1 = "X2";
-    }else if (newArray[0].PUNTOEX == 1 && localStorage.getItem("mundo") == 2) {
+    } else if (newArray[0].PUNTOEX == 1 && localStorage.getItem("mundo") == 2) {
         mas = "images/fmon_10-1_min.png";
         por = "1";
         por1 = "X1";

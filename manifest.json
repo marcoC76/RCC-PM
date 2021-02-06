@@ -6,17 +6,17 @@
   "display": "standalone",
   "orientation": "portrait",
   "Scope": "/",
-  "start_url": "/RCC-FM/?utm_source=homescreen",
+  "start_url": "/RCC-PM/?utm_source=homescreen",
   "shortcuts": [
     {
       "name": "Ayuda",
       "short_name": "Ayuda",
       "description": "Ver la ayuda del reporte",
-      "url": "/RCC-FM/ayuda?utm_source=homescreen",
+      "url": "/RCC-PM/ayuda?utm_source=homescreen",
       "icons": [
         {
-          "src": "images/icon-128x128.png",
-          "sizes": "128x128"
+          "src": "images/icon-ayuda.png",
+          "sizes": "192x192"
         }
       ]
     }
