@@ -7,16 +7,17 @@ ft(appi);
 /* window.onload = inicio; */
 
 function inicio() {
-    isMobile();
+   
     localStorage.setItem("mundo", 1);
     if (navigator.onLine) {
         // el navegador está conectado a la red
+        console.log("Si hay internet");
     } else {
         // el navegador NO está conectado a la red
         console.log("No hay internet");
         var internet = `
                           <div onclick="conexion();" class="conexion">
-                            <span  class="white-text" style="font-size:1.2em;">
+                            <span  class="white-text" style="font-size:1em;">
                                 SIN CONEXIÓN
                             </span>
                           </div>
