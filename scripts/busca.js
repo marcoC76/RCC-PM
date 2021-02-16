@@ -179,7 +179,7 @@ function recibir() {
                         </h2>
                         
                         <div id="mundoActualDesg" onclick="mundoInfo();" class="cost">
-                            Región ${localStorage.getItem("mundo")}
+                            Dimención ${localStorage.getItem("mundo")}
                         </div>
                         
                         <center>
@@ -835,7 +835,7 @@ function recibir() {
     var resumenChart = new Chart(ctx, {
         type: 'radar',
         data: {
-            labels: ['Actividades', 'Bitácora', ['Cuestionarios', 'previos'], 'Proyecto'],
+            labels: ['Actividades', 'Bitácora', 'Cuestionarios', 'Proyecto'],
             datasets: [{
                 label: 'Nivel',
                 fontColor: '#fff',
