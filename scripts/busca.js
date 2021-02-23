@@ -866,15 +866,15 @@ function recibir() {
         var actChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ["Act1", "Act2"],
+                labels: ["Act1", "Act2", "Act3"],
                 datasets: [{
                     label: 'Calificación',
-                    data: [newArray[0].ACTIVIDAD1, newArray[0].ACTIVIDAD2],
+                    data: [newArray[0].ACTIVIDAD1, newArray[0].ACTIVIDAD2, newArray[0].ACTIVIDAD3],
                     backgroundColor: [
                         'rgba(243, 145, 159, 0.6)',
-                        'rgba(208, 97, 112, 0.6)'
+                        'rgba(208, 97, 112, 0.6)',
+                        'rgba(167, 58, 73, 0.6)'
                         /* ,
-                                                'rgba(167, 58, 73, 0.6)',
                                                 'rgba(126, 28, 42, 0.6)',
                                                 'rgba(120, 19, 14, 0.6)',
                                                 'rgba(85, 8, 19, 0.6)',
@@ -896,15 +896,15 @@ function recibir() {
         var cuestChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ["Cuest1", "Cuest2"],
+                labels: ["Cuest1", "Cuest2", "Cuest3"],
                 datasets: [{
                     label: 'Calificación',
-                    data: [newArray[0].CUESTIONARIO1, newArray[0].CUESTIONARIO2],
+                    data: [newArray[0].CUESTIONARIO1, newArray[0].CUESTIONARIO2, newArray[0].CUESTIONARIO3],
                     backgroundColor: [
                         'rgba(27, 15, 255, 0.6)',
-                        'rgba(3, 106, 255, 0.6)'
+                        'rgba(3, 106, 255, 0.6)',
+                        'rgba(50, 65, 119, 0.6)'
                         /* ,
-                                                'rgba(50, 65, 119, 0.6)',
                                                 'rgba(22, 36, 89, 0.6)',
                                                 'rgba(5, 17, 57, 0.6)' */
                     ]
