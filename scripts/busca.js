@@ -174,10 +174,11 @@ function recibir() {
                             
                         </div>
                     <div id="elemento">
+                        <!--
                         <h2 class="name" >
                             Datos Generales
-                        </h2>
-                        
+                        </h2> 
+                        -->
                         <div id="mundoActualDesg" onclick="mundoInfo();" class="cost">
                             Dimensión ${localStorage.getItem("mundo")}
                         </div>
@@ -275,7 +276,7 @@ function recibir() {
 
                     <div id="elemento2">
                         <h2 class="name">
-                            Cuestionarios Previos
+                            Cuestionarios 
                         </h2>
                         <div class="desglo">
                             <img onclick="cuestInfo()" id="cuest1" src="images/insgCuest.png" />
