@@ -849,6 +849,13 @@ function recibir() {
             }]
         },
         options: {
+            "elements": {
+                "line": {
+                    "tension": 0,
+                    "borderWidth": 4
+                }
+            },
+
             legend: {
                 position: 'none',
             },
@@ -865,7 +872,7 @@ function recibir() {
 
         var ctx = document.getElementById("actChart");
         var actChart = new Chart(ctx, {
-            type: 'bar',
+            type: 'horizontalBar',
             data: {
                 labels: ["Act1", "Act2", "Act3"],
                 datasets: [{
@@ -884,18 +891,29 @@ function recibir() {
                 }]
             },
             options: {
+
                 scales: {
+                    xAxes: [{
+                        ticks: {
+                            suggestedMin: 0,
+                            suggestedMax: 10
+                        }
+                    }]
+                }
+               /*  scales: {
                     yAxes: [{
                         ticks: {
                             beginAtZero: true
                         }
                     }]
-                }
+                }, */
+
+
             }
         });
         var ctx = document.getElementById("cuestChart");
         var cuestChart = new Chart(ctx, {
-            type: 'bar',
+            type: 'horizontalBar',
             data: {
                 labels: ["Cuest1", "Cuest2", "Cuest3"],
                 datasets: [{
@@ -913,17 +931,25 @@ function recibir() {
             },
             options: {
                 scales: {
+                    xAxes: [{
+                        ticks: {
+                            suggestedMin: 0,
+                            suggestedMax: 10
+                        }
+                    }]
+                }
+                /* scales: {
                     yAxes: [{
                         ticks: {
                             beginAtZero: true
                         }
                     }]
-                }
+                } */
             }
         });
         var ctx = document.getElementById("proChart");
         var proChart = new Chart(ctx, {
-            type: 'pie',
+            type: 'doughnut',
             data: {
                 labels: ["Proyecto", ""],
                 datasets: [{
@@ -953,7 +979,7 @@ function recibir() {
         }); */
         var ctx = document.getElementById("bitChart");
         var bitChart = new Chart(ctx, {
-            type: 'pie',
+            type: 'doughnut',
             data: {
                 labels: ["Bitácora", ""],
                 datasets: [{
@@ -971,7 +997,7 @@ function recibir() {
     } else if (localStorage.getItem("mundo") == 2) {
         var ctx = document.getElementById("actChart");
         var actChart = new Chart(ctx, {
-            type: 'bar',
+            type: 'horizontalBar',
             data: {
                 labels: ["Act4", "Act5", "Act6"],
                 datasets: [{
@@ -994,17 +1020,25 @@ function recibir() {
             },
             options: {
                 scales: {
+                    xAxes: [{
+                        ticks: {
+                            suggestedMin: 0,
+                            suggestedMax: 10
+                        }
+                    }]
+                }
+                /* scales: {
                     yAxes: [{
                         ticks: {
                             beginAtZero: true
                         }
                     }]
-                }
+                } */
             }
         });
         var ctx = document.getElementById("cuestChart");
         var cuestChart = new Chart(ctx, {
-            type: 'bar',
+            type: 'horizontalBar',
             data: {
                 labels: ["Cuest4", "Cuest5", "Cuest6"],
                 datasets: [{
@@ -1025,17 +1059,25 @@ function recibir() {
             },
             options: {
                 scales: {
+                    xAxes: [{
+                        ticks: {
+                            suggestedMin: 0,
+                            suggestedMax: 10
+                        }
+                    }]
+                }
+                /* scales: {
                     yAxes: [{
                         ticks: {
                             beginAtZero: true
                         }
                     }]
-                }
+                } */
             }
         });
         var ctx = document.getElementById("proChart");
         var proChart = new Chart(ctx, {
-            type: 'pie',
+            type: 'doughnut',
             data: {
                 labels: ["Proyecto", ""],
                 datasets: [{
@@ -1065,7 +1107,7 @@ function recibir() {
         }); */
         var ctx = document.getElementById("bitChart");
         var bitChart = new Chart(ctx, {
-            type: 'pie',
+            type: 'doughnut',
             data: {
                 labels: ["Bitácora", ""],
                 datasets: [{
@@ -1083,7 +1125,7 @@ function recibir() {
         /*generar paleta http://paletton.com/#uid=55C050kkZm31qv5aYqCuJhzVNc+ */
         var ctx = document.getElementById("actChart");
         var actChart = new Chart(ctx, {
-            type: 'bar',
+            type: 'horizontalBar',
             data: {
                 labels: ["Act5", "Act6"],
                 datasets: [{
@@ -1102,17 +1144,25 @@ function recibir() {
             },
             options: {
                 scales: {
+                    xAxes: [{
+                        ticks: {
+                            suggestedMin: 0,
+                            suggestedMax: 10
+                        }
+                    }]
+                }
+               /*  scales: {
                     yAxes: [{
                         ticks: {
                             beginAtZero: true
                         }
                     }]
-                }
+                } */
             }
         });
         var ctx = document.getElementById("cuestChart");
         var cuestChart = new Chart(ctx, {
-            type: 'bar',
+            type: 'horizontalBar',
             data: {
                 labels: ["Cuest5", "Cuest6"],
                 datasets: [{
@@ -1128,17 +1178,25 @@ function recibir() {
             },
             options: {
                 scales: {
+                    xAxes: [{
+                        ticks: {
+                            suggestedMin: 0,
+                            suggestedMax: 10
+                        }
+                    }]
+                }
+                /* scales: {
                     yAxes: [{
                         ticks: {
                             beginAtZero: true
                         }
                     }]
-                }
+                } */
             }
         });
         var ctx = document.getElementById("proChart");
         var proChart = new Chart(ctx, {
-            type: 'pie',
+            type: 'doughnut',
             data: {
                 labels: ["Proyecto", ""],
                 datasets: [{
@@ -1168,7 +1226,7 @@ function recibir() {
         }); */
         var ctx = document.getElementById("bitChart");
         var bitChart = new Chart(ctx, {
-            type: 'pie',
+            type: 'doughnut',
             data: {
                 labels: ["Bitácora", ""],
                 datasets: [{
