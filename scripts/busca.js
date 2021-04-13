@@ -7,7 +7,7 @@ ft(appi);
 /* window.onload = inicio; */
 
 function inicio() {
-   
+
     localStorage.setItem("mundo", 1);
     if (navigator.onLine) {
         // el navegador está conectado a la red
@@ -973,18 +973,22 @@ function recibir() {
         var actChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ["Act3", "Act4"],
+                labels: ["Act4", "Act5", "Act6"],
                 datasets: [{
                     label: 'Calificación',
-                    data: [newArray[0].ACTIVIDAD3, newArray[0].ACTIVIDAD4],
+                    data: [newArray[0].ACTIVIDAD4, newArray[0].ACTIVIDAD5, newArray[0].ACTIVIDAD6],
                     backgroundColor: [
-                        'rgba(197, 204, 215, 0.6)',
-                        'rgba(106, 127, 159, 0.6)'
-                        /* ,
-                                                'rgba(47, 74, 116, 0.6)',
-                                                'rgba(12, 37, 76, 0.6)',
-                                                'rgba(1, 13, 32, 0.6)',
-                                                'rgba(0, 8, 21, 0.6)' */
+                        'rgba(243, 145, 159, 0.6)',
+                        'rgba(208, 97, 112, 0.6)',
+                        'rgba(167, 58, 73, 0.6)'
+
+
+                        /*'rgba(197, 204, 215, 0.6)',
+                        'rgba(106, 127, 159, 0.6)',
+                        'rgba(47, 74, 116, 0.6)',
+                        'rgba(12, 37, 76, 0.6)',
+                        'rgba(1, 13, 32, 0.6)',
+                        'rgba(0, 8, 21, 0.6)' */
                     ]
                 }]
             },
@@ -1002,16 +1006,20 @@ function recibir() {
         var cuestChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ["Cuest3", "Cuest4"],
+                labels: ["Cuest4", "Cuest5", "Cuest6"],
                 datasets: [{
                     label: 'Calificación',
-                    data: [newArray[0].CUESTIONARIO3, newArray[0].CUESTIONARIO4],
+                    data: [newArray[0].CUESTIONARIO4, newArray[0].CUESTIONARIO5, newArray[0].CUESTIONARIO6],
                     backgroundColor: [
-                        'rgba(92, 171, 137, 0.6)',
-                        'rgba(64, 146, 111, 0.6)'
-                        /* ,
-                                                'rgba(42, 120, 87, 0.6)',
-                                                'rgba(24, 95, 65, 0.6)' */
+                        'rgba(27, 15, 255, 0.6)',
+                        'rgba(3, 106, 255, 0.6)',
+                        'rgba(50, 65, 119, 0.6)'
+
+
+                        /*'rgba(92, 171, 137, 0.6)',
+                        'rgba(64, 146, 111, 0.6)',
+                        'rgba(42, 120, 87, 0.6)' ,
+                        'rgba(24, 95, 65, 0.6)' */
                     ]
                 }]
             },
@@ -1034,7 +1042,7 @@ function recibir() {
                     label: 'Calificación',
                     data: [newArray[0].PROYECTO, 10 - newArray[0].PROYECTO],
                     backgroundColor: [
-                        'rgba(136, 47, 105, 0.6)'
+                        'rgba(255, 227, 194, 0.6)'
 
                     ]
                 }]
@@ -1064,7 +1072,7 @@ function recibir() {
                     label: 'Calificación',
                     data: [newArray[0].BITACORA, 10 - newArray[0].BITACORA],
                     backgroundColor: [
-                        'rgba(176, 131, 61, 0.6)'
+                        'rgba(153, 102, 255, 0.6)'
                     ]
                 }]
             }
