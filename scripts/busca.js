@@ -1130,11 +1130,15 @@ function recibir() {
                 labels: ["Act5", "Act6"],
                 datasets: [{
                     label: 'Calificación',
-                    data: [newArray[0].ACTIVIDAD5, newArray[0].ACTIVIDAD6],
+                    data: [newArray[0].ACTIVIDAD7, newArray[0].ACTIVIDAD8, newArray[0].ACTIVIDAD9],
                     backgroundColor: [
-                        'rgba(56, 2, 59, 0.6)',
+                        'rgba(243, 145, 159, 0.6)',
+                        'rgba(208, 97, 112, 0.6)',
+                        'rgba(167, 58, 73, 0.6)'
+
+                        /*  'rgba(56, 2, 59, 0.6)',
                         'rgba(162, 136, 227, 0.6)'
-                        /* ,
+                       ,
                                                 'rgba(187, 213, 237, 0.6)',
                                                 'rgba(206, 253, 255, 0.6)',
                                                                         'rgba(204, 255, 203, 0.6)',
@@ -1167,11 +1171,14 @@ function recibir() {
                 labels: ["Cuest5", "Cuest6"],
                 datasets: [{
                     label: 'Calificación',
-                    data: [newArray[0].CUESTIONARIO5, newArray[0].CUESTIONARIO6],
+                    data: [newArray[0].CUESTIONARIO7, newArray[0].CUESTIONARIO8, newArray[0].CUESTIONARIO9],
                     backgroundColor: [
-                        'rgba(64, 146, 111, 0.6)',
+                        'rgba(27, 15, 255, 0.6)',
+                        'rgba(3, 106, 255, 0.6)',
+                        'rgba(50, 65, 119, 0.6)'
+                       /* 'rgba(64, 146, 111, 0.6)',
                         'rgba(42, 120, 87, 0.6)'
-                        /* ,
+                         ,
                                                 'rgba(24, 95, 65, 0.6)' */
                     ]
                 }]
