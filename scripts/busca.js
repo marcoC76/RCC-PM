@@ -1127,7 +1127,7 @@ function recibir() {
         var actChart = new Chart(ctx, {
             type: 'horizontalBar',
             data: {
-                labels: ["Act5", "Act6"],
+                labels: ["Act7", "Act8", "Act9"],
                 datasets: [{
                     label: 'Calificación',
                     data: [newArray[0].ACTIVIDAD7, newArray[0].ACTIVIDAD8, newArray[0].ACTIVIDAD9],
@@ -1168,7 +1168,7 @@ function recibir() {
         var cuestChart = new Chart(ctx, {
             type: 'horizontalBar',
             data: {
-                labels: ["Cuest5", "Cuest6"],
+                labels: ["Cuest7", "Cuest8", "Cuest9"],
                 datasets: [{
                     label: 'Calificación',
                     data: [newArray[0].CUESTIONARIO7, newArray[0].CUESTIONARIO8, newArray[0].CUESTIONARIO9],
