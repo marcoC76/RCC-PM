@@ -179,6 +179,8 @@ function recibir() {
                             Datos Generales
                         </h2> 
                         -->
+                        <br>
+                        <br>
                         <div id="mundoActualDesg" onclick="mundoInfo();" class="cost">
                             Dimensión ${localStorage.getItem("mundo")}
                         </div>
