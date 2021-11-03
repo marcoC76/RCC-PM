@@ -1001,17 +1001,19 @@ function recibir() {
         var actChart = new Chart(ctx, {
             type: 'horizontalBar',
             data: {
-                labels: ["Act4", "Act5", "Act6"],
+                labels: ["Act3", "Act4"],
                 datasets: [{
                     label: 'Calificación',
-                    data: [newArray[0].ACTIVIDAD4, newArray[0].ACTIVIDAD5, newArray[0].ACTIVIDAD6],
+                    data: [newArray[0].ACTIVIDAD3, newArray[0].ACTIVIDAD4],
                     backgroundColor: [
                         'rgba(243, 145, 159, 0.6)',
-                        'rgba(208, 97, 112, 0.6)',
+                        'rgba(208, 97, 112, 0.6)'
+
+
+                        /*
+                        ,
                         'rgba(167, 58, 73, 0.6)'
-
-
-                        /*'rgba(197, 204, 215, 0.6)',
+                        'rgba(197, 204, 215, 0.6)',
                         'rgba(106, 127, 159, 0.6)',
                         'rgba(47, 74, 116, 0.6)',
                         'rgba(12, 37, 76, 0.6)',
@@ -1042,17 +1044,19 @@ function recibir() {
         var cuestChart = new Chart(ctx, {
             type: 'horizontalBar',
             data: {
-                labels: ["Cuest4", "Cuest5", "Cuest6"],
+                labels: ["Cuest3", "Cuest4"],
                 datasets: [{
                     label: 'Calificación',
-                    data: [newArray[0].CUESTIONARIO4, newArray[0].CUESTIONARIO5, newArray[0].CUESTIONARIO6],
+                    data: [newArray[0].CUESTIONARIO3, newArray[0].CUESTIONARIO4],
                     backgroundColor: [
                         'rgba(27, 15, 255, 0.6)',
-                        'rgba(3, 106, 255, 0.6)',
+                        'rgba(3, 106, 255, 0.6)'
+
+
+                        /*
+                        ,
                         'rgba(50, 65, 119, 0.6)'
-
-
-                        /*'rgba(92, 171, 137, 0.6)',
+                        'rgba(92, 171, 137, 0.6)',
                         'rgba(64, 146, 111, 0.6)',
                         'rgba(42, 120, 87, 0.6)' ,
                         'rgba(24, 95, 65, 0.6)' */
