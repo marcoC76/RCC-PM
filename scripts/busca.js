@@ -1139,9 +1139,9 @@ function recibir() {
                     data: [newArray[0].ACTIVIDAD5, newArray[0].ACTIVIDAD6],
                     backgroundColor: [
                         'rgba(243, 145, 159, 0.6)',
-                        'rgba(208, 97, 112, 0.6)
+                        'rgba(208, 97, 112, 0.6)'
 
-                        /*  ',
+                        /*  ,
                         'rgba(167, 58, 73, 0.6)'
                         
                         'rgba(56, 2, 59, 0.6)',
