@@ -227,7 +227,7 @@ function recibir() {
                                    
                             </center>
                                 <div class="meter negro" id="">
-                                    <span class="animate" style="width: ${(parseInt(newArray[0].TOTALASIS)*100)/16}%"></span>
+                                    <span class="animate" style="width: ${(parseInt(newArray[0].TOTALASIS)*100)/12}%"></span>
                                 </div>
                                 <br>
                                 <center>
