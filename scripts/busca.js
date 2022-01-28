@@ -139,8 +139,12 @@ function recibir() {
                             <center id="descripcion"></center>
                         </div>
                         <div class="abilities insignias" >
-                            Resumen: <hr>
-                            <canvas id="resumen" width="100%" height="70hv"></canvas>
+                           Resumen:
+                        <hr>
+
+                            
+                                <canvas id="resumen" width="100%" height="70hv"></canvas>
+                            
                         </div>
                         <div class="insignias">Tus monstruos: <hr>
                             <center id="centro">
@@ -156,7 +160,7 @@ function recibir() {
                             ${parseInt((parseFloat(newArray[0].CALI)+parseFloat(newArray[0].PUNTOEX)) * 100)}<span style="font-size:0.5em;">p</span> 
                         </div>
                         <div class="defense stat" onclick="puntosInfo();">
-                            
+                        <span id="txtRango1" ></span>
                             <img  title="Rango" id="rango1" src="images/nivel2.png" />
                            
                         </div>
@@ -205,8 +209,12 @@ function recibir() {
                             </div>
                         </center>
                         <h2 class="name">
-                            Iniciales: <span class="tamaño ">${newArray[0].COMPLETO.split(" ").map((n)=>n[0]).join(" ")}</span>
+                            Iniciales: 
                         </h2>
+                            <br>
+                            
+                        <h2 class="tamaño nomIniciales">${newArray[0].COMPLETO.split(" ").map((n)=>n[0]).join("∙∙∙∙ ")}∙∙∙∙</h2>
+                       
                         <h2 class="name">
                             Grupo: <span class="tamaño ">${newArray[0].GRUPO}</span>
                         </h2>
@@ -214,11 +222,27 @@ function recibir() {
                             Clan: <span class="tamaño ">${newArray[0].EQUIPO} </span><img class="animal" id="clan" src="images/animales/${newArray[0].EQUIPO}.png" width="500%" onclick="clanInfo();" /> 
                         </h2>
 
-                        <h2 class="name">
+                        <h2 class="name" style="display:none">
                             Punto Extra: <img class="" id="mas1" src="images/insgPuntos.png" /><span class="" id="por1"></span>
                         </h2>
-
                         <br>
+                        <div class="abilities " >
+                            <center>
+                                <h2 class="name" onclick="asisInfo();" >
+                                    Quemado:
+                                    </h2>
+                                   
+                            </center>
+                                <div class="meter negro" id="">
+                                    <span class="animate" style="width: ${(parseInt(newArray[0].TOTALASIS)*100)/12}%"></span>
+                                </div>
+                                <br>
+                                <center>
+                                <h3>Tareas pendientes: ${newArray[0].TOTALASIS}</h3>
+                                </center>
+                               
+                        </div>
+                        
                         <div class="abilities " >
                             <center>
                                 <h2 class="name" onclick="asisInfo();" >
@@ -274,6 +298,7 @@ function recibir() {
                 <br>
                 <br>
 
+                
                 <div  class="card no-seleccionable" id="carta2" >
 
                     <div id="elemento2">
@@ -441,6 +466,48 @@ function recibir() {
                         <div class="sheen"></div>
                     </div> 
                 </div>
+                <br>
+                <br>
+                <div  class="card no-seleccionable" id="carta6" >
+
+                    <div id="elemento6">
+                        <h2 class="name">
+                            Puntos Extra 
+                        </h2>
+                        <div class="desglo">
+                            <img onclick="masInfo()" id="mas2" src="images/insgCuest.png" />
+                        </div>
+                        <h4 class="ayuda">Puntos totales: <a style="font-size:1.5em;">${newArray[0].PUNTOEX*100}</a></h4>
+                        <center class="insignias">
+                            <canvas  id="extraChart" width="100%"></canvas>
+                        </center>
+                        <div class="abilities">
+                            <div class="meter gris">
+                                <span style="width: ${(parseInt(newArray[0].PUNTOEX)*100)/2}%"></span>
+                            </div>
+                            <br>
+                            <center>
+                                <h4 class="ayuda">Puntos (sobre calificacion final): <a  style="font-size:1.5em;">${newArray[0].PUNTOEX}</a></h4>
+                                
+                            </center>
+                            </div>
+                            <div class="abilities">
+                                <center>
+                                    <span class="evolution" >
+                                        <img id="fmonMas0" src="images/Huevo_005.png" />
+                                        ⇒
+                                        <img id="fmonMas1" src="" />
+                                        ⇒
+                                        <img id="fmonMas2" src="" />
+                                    </span>
+                                </center>
+                            </div>
+                        <div class="sheen"></div>
+                    </div>
+                </div>
+
+                <br>
+                <br>
                 `;
     document.getElementById("resultado").innerHTML = salida;
 
@@ -492,6 +559,7 @@ function recibir() {
     document.getElementById("rango1").src = rango;
     document.getElementById("rango").src = rango;
     document.getElementById("txtRango").innerHTML = txtRango;
+    document.getElementById("txtRango1").innerHTML = txtRango;
 
 
     /* insignias => monstruo */
@@ -723,40 +791,54 @@ function recibir() {
     var por = "";
     var por1 = "";
     var mas = "";
+    var mas_min = "";
 
     if (newArray[0].PUNTOEX == 1 && localStorage.getItem("mundo") == 1) {
-        mas = "images/fmon_5-1_min.png";
+        mas = "images/fmon_5-1.png";
+        mas_min = "images/fmon_5-1_min.png";
+        document.getElementById("fmonMas2").style.filter = "brightness(0%)";
         por = "1";
         por1 = "X1";
     } else if (newArray[0].PUNTOEX == 2 && localStorage.getItem("mundo") == 1) {
-        mas = "images/fmon_5-2_min.png";
+        mas = "images/fmon_5-2.png";
+        mas_min = "images/fmon_5-2_min.png";
         por = "2";
         por1 = "X2";
     } else if (newArray[0].PUNTOEX == 1 && localStorage.getItem("mundo") == 2) {
-        mas = "images/fmon_10-1_min.png";
+        mas = "images/fmon_10-1.png";
+        mas_min = "images/fmon_10-1_min.png";
+        document.getElementById("fmonMas2").style.filter = "brightness(0%)";
         por = "1";
         por1 = "X1";
     } else if (newArray[0].PUNTOEX == 2 && localStorage.getItem("mundo") == 2) {
-        mas = "images/fmon_10-2_min.png";
+        mas = "images/fmon_10-2.png";
+        mas_min = "images/fmon_10-2_min.png";
         por = "2";
         por1 = "X2";
     } else if (newArray[0].PUNTOEX == 1 && localStorage.getItem("mundo") == 3) {
-        mas = "images/fmon_15-1_min.png";
+        mas = "images/fmon_15-1.png";
+        mas_min = "images/fmon_15-1_min.png";
+        document.getElementById("fmonMas2").style.filter = "brightness(0%)";
         por = "1";
         por1 = "X1";
     } else if (newArray[0].PUNTOEX == 2 && localStorage.getItem("mundo") == 3) {
-        mas = "images/fmon_15-2_min.png";
+        mas = "images/fmon_15-2.png";
+        mas_min = "images/fmon_15-2_min.png";
         por = "2";
         por1 = "X2";
     } else {
         mas = "images/Huevo_005.png";
+        mas_min = "images/Huevo_005.png";
+        document.getElementById("fmonMas1").style.filter = "brightness(0%)";
+        document.getElementById("fmonMas2").style.filter = "brightness(0%)";
         document.getElementById("por").style.display = "none";
     }
 
     document.getElementById("por").innerHTML = por;
     document.getElementById("por1").innerHTML = por1;
-    document.getElementById("mas").src = mas;
-    document.getElementById("mas1").src = mas;
+    document.getElementById("mas").src = mas_min;
+    document.getElementById("mas1").src = mas_min;
+    document.getElementById("mas2").src = mas;
 
 
     /* lineas evolutivas */
@@ -774,6 +856,8 @@ function recibir() {
         fmonPro1 = "images/fmon_4-1_min.png";
         fmonPro2 = "images/fmon_4-2_min.png";
         fmonPro3 = "images/fmon_4-3_min.png";
+        fmonMas1 = "images/fmon_5-1_min.png";
+        fmonMas2 = "images/fmon_5-2_min.png";
     } else
     if (localStorage.getItem("mundo") == 2) {
         fmonAct1 = "images/fmon_6-1_min.png";
@@ -788,6 +872,8 @@ function recibir() {
         fmonPro1 = "images/fmon_9-1_min.png";
         fmonPro2 = "images/fmon_9-2_min.png";
         fmonPro3 = "images/fmon_9-3_min.png";
+        fmonMas1 = "images/fmon_10-1_min.png";
+        fmonMas2 = "images/fmon_10-2_min.png";
     } else
     if (localStorage.getItem("mundo") == 3) {
         fmonAct1 = "images/fmon_11-1_min.png";
@@ -802,6 +888,8 @@ function recibir() {
         fmonPro1 = "images/fmon_14-1_min.png";
         fmonPro2 = "images/fmon_14-2_min.png";
         fmonPro3 = "images/fmon_14-3_min.png";
+        fmonMas1 = "images/fmon_15-1_min.png";
+        fmonMas2 = "images/fmon_15-2_min.png";
     }
 
     document.getElementById("fmonAct1").src = fmonAct1;
@@ -816,6 +904,8 @@ function recibir() {
     document.getElementById("fmonPro1").src = fmonPro1;
     document.getElementById("fmonPro2").src = fmonPro2;
     document.getElementById("fmonPro3").src = fmonPro3;
+    document.getElementById("fmonMas1").src = fmonMas1;
+    document.getElementById("fmonMas2").src = fmonMas2;
 
     var backgroundColor = '#062e6b80';
     var borderColor = '#0042A6';
@@ -902,13 +992,13 @@ function recibir() {
                         }
                     }]
                 }
-               /*  scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                }, */
+                /*  scales: {
+                     yAxes: [{
+                         ticks: {
+                             beginAtZero: true
+                         }
+                     }]
+                 }, */
 
 
             }
@@ -993,6 +1083,43 @@ function recibir() {
                 }]
             }
 
+        });
+
+        var ctx = document.getElementById("extraChart");
+        var extraChart = new Chart(ctx, {
+            type: 'horizontalBar',
+            data: {
+                labels: ["Extra1", "Extra2"],
+                datasets: [{
+                    label: 'Calificación',
+                    data: [newArray[0].PUNTOEX1, newArray[0].PUNTOEX2],
+                    backgroundColor: [
+                        'rgba(15, 14, 22, 0.6)',
+                        'rgba(30, 31, 38, 0.6)'
+                        /* ,
+                                                'rgba(50, 65, 119, 0.6)'
+                                                'rgba(22, 36, 89, 0.6)',
+                                                'rgba(5, 17, 57, 0.6)' */
+                    ]
+                }]
+            },
+            options: {
+                scales: {
+                    xAxes: [{
+                        ticks: {
+                            suggestedMin: 0,
+                            suggestedMax: 1
+                        }
+                    }]
+                }
+                /* scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                } */
+            }
         });
 
 
@@ -1126,6 +1253,43 @@ function recibir() {
             }
 
         });
+
+        var ctx = document.getElementById("extraChart");
+        var extraChart = new Chart(ctx, {
+            type: 'horizontalBar',
+            data: {
+                labels: ["Extra1", "Extra2"],
+                datasets: [{
+                    label: 'Calificación',
+                    data: [newArray[0].PUNTOEX1, newArray[0].PUNTOEX2],
+                    backgroundColor: [
+                        'rgba(80, 78, 78, 0.6)',
+                        'rgba(68, 65, 65, 0.6)'
+                        /* ,
+                                                'rgba(50, 65, 119, 0.6)'
+                                                'rgba(22, 36, 89, 0.6)',
+                                                'rgba(5, 17, 57, 0.6)' */
+                    ]
+                }]
+            },
+            options: {
+                scales: {
+                    xAxes: [{
+                        ticks: {
+                            suggestedMin: 0,
+                            suggestedMax: 1
+                        }
+                    }]
+                }
+                /* scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                } */
+            }
+        });
     } else if (localStorage.getItem("mundo") == 3) {
 
         /*generar paleta http://paletton.com/#uid=55C050kkZm31qv5aYqCuJhzVNc+ */
@@ -1163,13 +1327,13 @@ function recibir() {
                         }
                     }]
                 }
-               /*  scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                } */
+                /*  scales: {
+                     yAxes: [{
+                         ticks: {
+                             beginAtZero: true
+                         }
+                     }]
+                 } */
             }
         });
         var ctx = document.getElementById("cuestChart");
@@ -1183,12 +1347,12 @@ function recibir() {
                     backgroundColor: [
                         'rgba(27, 15, 255, 0.6)',
                         'rgba(3, 106, 255, 0.6)'
-                       /*,
-                        'rgba(50, 65, 119, 0.6)' 
-                       'rgba(64, 146, 111, 0.6)',
-                        'rgba(42, 120, 87, 0.6)'
-                         ,
-                                                'rgba(24, 95, 65, 0.6)' */
+                        /*,
+                         'rgba(50, 65, 119, 0.6)' 
+                        'rgba(64, 146, 111, 0.6)',
+                         'rgba(42, 120, 87, 0.6)'
+                          ,
+                                                 'rgba(24, 95, 65, 0.6)' */
                     ]
                 }]
             },
@@ -1255,6 +1419,43 @@ function recibir() {
             }
 
         });
+
+        var ctx = document.getElementById("extraChart");
+        var extraChart = new Chart(ctx, {
+            type: 'horizontalBar',
+            data: {
+                labels: ["Extra1", "Extra2"],
+                datasets: [{
+                    label: 'Calificación',
+                    data: [newArray[0].PUNTOEX1, newArray[0].PUNTOEX2],
+                    backgroundColor: [
+                        'rgba(80, 78, 78, 0.6)',
+                        'rgba(68, 65, 65, 0.6)'
+                        /* ,
+                                                'rgba(50, 65, 119, 0.6)'
+                                                'rgba(22, 36, 89, 0.6)',
+                                                'rgba(5, 17, 57, 0.6)' */
+                    ]
+                }]
+            },
+            options: {
+                scales: {
+                    xAxes: [{
+                        ticks: {
+                            suggestedMin: 0,
+                            suggestedMax: 1
+                        }
+                    }]
+                }
+                /* scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                } */
+            }
+        });
     }
 
     /* habilidades */
@@ -1269,6 +1470,9 @@ function recibir() {
         document.getElementById("habilidad3").style.textDecoration = "line-through";
     } */
 
+
+
+   
 
     var caracter = "";
     if (localStorage.getItem("mundo") == 1) {
@@ -1842,6 +2046,27 @@ var elementosScrollTop = function () {
     }
     // Listeners
     window.addEventListener('scroll', reveal5);
+
+    var reveal6 = function () {
+        var elemento = document.querySelector("#elemento6");
+        var carta = document.querySelector("#carta6");
+        if (window.scrollY >= 2540) {
+            /* console.log("se ve"); */
+            /*  elemento.style.opacity="1" */
+            elemento.style.display = "inline";
+            carta.style.opacity = "1";
+            carta.style = "animation: llega 1.2s forwards 0s ease-in";
+
+        } else {
+            /* console.log("no se ve"); */
+            /* elemento.style.opacity="0" */
+            /*   elemento.style.display = "none";
+              carta.style.opacity = "0";
+              carta.style ="animation: va 1.2s forwards 0s ease-in"; */
+        }
+    }
+    // Listeners
+    window.addEventListener('scroll', reveal6);
 
 
 };
