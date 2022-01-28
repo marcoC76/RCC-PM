@@ -213,7 +213,7 @@ function recibir() {
                         </h2>
                             <br>
                             
-                        <h2 class="tamaño nomIniciales">${newArray[0].COMPLETO.split(" ").map((n)=>n[0]).join("∙∙∙∙ ")}∙∙∙∙</h2>
+                        <h2 class="tamaño nomIniciales">${newArray[0].COMPLETO.split(" ").map((n)=>n[0]).join("∙∙∙ ")}∙∙∙</h2>
                        
                         <h2 class="name">
                             Grupo: <span class="tamaño ">${newArray[0].GRUPO}</span>
@@ -231,14 +231,14 @@ function recibir() {
                                 <h2 class="name" onclick="asisInfo();" >
                                     Quemado:
                                     </h2>
-                                   
+                                   <canvas id="quemado" width="100%" height="70hv"></canvas>
                             </center>
-                                <div class="meter negro" id="">
-                                    <span class="animate" style="width: ${(parseInt(newArray[0].TOTALASIS)*100)/12}%"></span>
+                                <div class="meter gris" id="">
+                                    <span class="animate" style="width: ${(parseInt(newArray[0].DIA12)*100)/9}%"></span>
                                 </div>
                                 <br>
                                 <center>
-                                <h3>Tareas pendientes: ${newArray[0].TOTALASIS}</h3>
+                                <h3>Tareas pendientes: ${newArray[0].DIA12}</h3>
                                 </center>
                                
                         </div>
@@ -960,6 +960,78 @@ function recibir() {
         }
     });
 
+    /* grafica de quemado */
+
+    var ctx = document.getElementById("quemado");
+    var quemado = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ["Día1", "Día2", "Día3", "Día4", "Día5", "Día6", "Día7", "Día8", "Día9", "Día10", "Día11", "Día12"],
+            datasets: [{
+
+                    label: 'Pendientes',
+                    data: [newArray[0].DIA1, newArray[0].DIA2, newArray[0].DIA3, newArray[0].DIA4, newArray[0].DIA5, newArray[0].DIA6, newArray[0].DIA7, newArray[0].DIA8, newArray[0].DIA9, newArray[0].DIA10, newArray[0].DIA11, newArray[0].DIA12],
+                    "fill": false,
+                    "borderColor": "rgb(4, 145, 159)",
+                    "lineTension": 0.1,
+                    backgroundColor: [
+                        'rgba(4, 145, 159, 0.6)',
+                        'rgba(4, 145, 159, 0.6)',
+                        'rgba(4, 145, 159, 0.6)',
+                        'rgba(4, 145, 159, 0.6)',
+                        'rgba(4, 145, 159, 0.6)',
+                        'rgba(4, 145, 159, 0.6)',
+                        'rgba(4, 145, 159, 0.6)',
+                        'rgba(4, 145, 159, 0.6)',
+                        'rgba(4, 145, 159, 0.6)',
+                        'rgba(4, 145, 159, 0.6)',
+                        'rgba(4, 145, 159, 0.6)',
+                        'rgba(4, 145, 159, 0.6)'
+                    ]
+                },
+                {
+
+                    label: 'Media',
+                    data: [9, 8.25, 7.5, 6.75, 6, 5.25, 4.5, 3.75, 3, 2.25, 1.5, 0.75],
+                    "fill": false,
+                    "borderColor": "rgb(214, 45, 9)",
+                    "lineTension": 0.1,
+                    "pointBackgroundColor": 'rgba(0,0,0,0)',
+                    "pointBorderColor": 'rgba(0,0,0,0)',
+                    backgroundColor: [
+                        'rgba(214, 45, 9, 0.6)',
+                        'rgba(214, 45, 9, 0.6)',
+                        'rgba(214, 45, 9, 0.6)',
+                        'rgba(214, 45, 9, 0.6)',
+                        'rgba(214, 45, 9, 0.6)',
+                        'rgba(214, 45, 9, 0.6)',
+                        'rgba(214, 45, 9, 0.6)',
+                        'rgba(214, 45, 9, 0.6)',
+                        'rgba(214, 45, 9, 0.6)',
+                        'rgba(214, 45, 9, 0.6)',
+                        'rgba(214, 45, 9, 0.6)',
+                        'rgba(214, 45, 9, 0.6)'
+                    ]
+                }
+
+            ]
+        },
+        options: {
+
+            scales: {
+                xAxes: [{
+                    ticks: {
+                        suggestedMin: 0,
+                        suggestedMax: 9,
+                        stepSize: 0.1
+                    }
+                }]
+            }
+
+
+        }
+    });
+
     if (localStorage.getItem("mundo") == 1) {
 
         var ctx = document.getElementById("actChart");
@@ -1472,7 +1544,7 @@ function recibir() {
 
 
 
-   
+
 
     var caracter = "";
     if (localStorage.getItem("mundo") == 1) {
