@@ -440,10 +440,10 @@ p {
 }
 
 .cost {
-  padding: 15px 20px 0px 0px;
+  padding: 8px 20px 0px 0px;
   position: absolute;
   right: -10px;
-  top: -1%;
+  top: 0%;
   font-weight: bold;
   font-size: 1.5em;
   color: white;

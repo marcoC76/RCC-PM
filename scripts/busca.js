@@ -1,13 +1,27 @@
 var obj;
+var obj1;
+var obj2;
+var obj3;
 var salida = '';
 var valor;
 
-var appi = "https://script.googleusercontent.com/macros/echo?user_content_key=F50kUuixg_1_YNRBwi-XJB9Irsas9MzbLt4HIRZSSQW6mLPfwDXhVX1mvQ0tFXI9qN3e22ahv33gsDNlgmxmCNfjzRWAR42Hm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnH7FvHuoCA3aY6oYh_uPeR7OGIv6mE7OArfLpHEi2SkZG7auUhcX8GvYge8pF1VBKFasVhBWVkFc&lib=MlfAK7sYzDUKhAPiLWJ3BQCiYTb7JmIRw";
-ft(appi);
+var appi1 = "https://script.googleusercontent.com/macros/echo?user_content_key=F50kUuixg_1_YNRBwi-XJB9Irsas9MzbLt4HIRZSSQW6mLPfwDXhVX1mvQ0tFXI9qN3e22ahv33gsDNlgmxmCNfjzRWAR42Hm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnH7FvHuoCA3aY6oYh_uPeR7OGIv6mE7OArfLpHEi2SkZG7auUhcX8GvYge8pF1VBKFasVhBWVkFc&lib=MlfAK7sYzDUKhAPiLWJ3BQCiYTb7JmIRw";
+
+var appi2 = "https://script.google.com/macros/s/AKfycby_mP3ow6lHHhp5KoZ2cp-JvapWOc6bCEDHQqEdko2k9D1Y-ali/exec";
+
+var appi3 = "https://script.google.com/macros/s/AKfycbwh4AaAthKZ9R9n0aaYdXa4GnINTOWVImp1s9C5U6ZifKUBw6o2/exec";
+
+
+ft1(appi1);
+ft2(appi2);
+ft3(appi3);
+
+
+
 /* window.onload = inicio; */
 
 function inicio() {
-
+    obj = JSON.parse(localStorage.getItem("obj1"));
     localStorage.setItem("mundo", 1);
     if (navigator.onLine) {
         // el navegador está conectado a la red
@@ -32,10 +46,10 @@ function cambiaMundo(num) {
     if (localStorage.getItem("mundo") == 1) {
         console.log(localStorage.getItem("mundo"));
         document.body.className = 'fondo1';
+        obj = obj1;
 
-
-        appi = "https://script.googleusercontent.com/macros/echo?user_content_key=F50kUuixg_1_YNRBwi-XJB9Irsas9MzbLt4HIRZSSQW6mLPfwDXhVX1mvQ0tFXI9qN3e22ahv33gsDNlgmxmCNfjzRWAR42Hm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnH7FvHuoCA3aY6oYh_uPeR7OGIv6mE7OArfLpHEi2SkZG7auUhcX8GvYge8pF1VBKFasVhBWVkFc&lib=MlfAK7sYzDUKhAPiLWJ3BQCiYTb7JmIRw";
-        ft(appi);
+       /*  appi = "https://script.googleusercontent.com/macros/echo?user_content_key=F50kUuixg_1_YNRBwi-XJB9Irsas9MzbLt4HIRZSSQW6mLPfwDXhVX1mvQ0tFXI9qN3e22ahv33gsDNlgmxmCNfjzRWAR42Hm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnH7FvHuoCA3aY6oYh_uPeR7OGIv6mE7OArfLpHEi2SkZG7auUhcX8GvYge8pF1VBKFasVhBWVkFc&lib=MlfAK7sYzDUKhAPiLWJ3BQCiYTb7JmIRw";
+        ft(appi); */
         document.getElementById("resultado").innerHTML = `                                                    
                                                             <div class="card">
                                                                 <br>
@@ -49,9 +63,9 @@ function cambiaMundo(num) {
         limpiar();
         console.log(localStorage.getItem("mundo"));
         document.body.className = 'fondo2';
-
-        appi = "https://script.google.com/macros/s/AKfycby_mP3ow6lHHhp5KoZ2cp-JvapWOc6bCEDHQqEdko2k9D1Y-ali/exec";
-        ft(appi);
+        obj = obj2;
+        /* appi = "https://script.google.com/macros/s/AKfycby_mP3ow6lHHhp5KoZ2cp-JvapWOc6bCEDHQqEdko2k9D1Y-ali/exec";
+        ft(appi); */
         document.getElementById("resultado").innerHTML = `
                                                             <div class="card">
                                                                 <br>
@@ -65,8 +79,9 @@ function cambiaMundo(num) {
         limpiar();
         console.log(localStorage.getItem("mundo"));
         document.body.className = 'fondo3';
-        appi = "https://script.google.com/macros/s/AKfycbwh4AaAthKZ9R9n0aaYdXa4GnINTOWVImp1s9C5U6ZifKUBw6o2/exec";
-        ft(appi);
+        obj = obj3;
+       /*  appi = "https://script.google.com/macros/s/AKfycbwh4AaAthKZ9R9n0aaYdXa4GnINTOWVImp1s9C5U6ZifKUBw6o2/exec";
+        ft(appi); */
         document.getElementById("resultado").innerHTML = `
                                                             <div class="card">
                                                                 <br>
@@ -78,24 +93,57 @@ function cambiaMundo(num) {
     }
 }
 
-function ft(appi) {
+function ft1(appi) {
 
     fetch(appi)
         .then(function (response) {
             return response.json();
         })
         .then(function (data) {
-            obj = data;
+            obj1 = data;
 
             /*  console.log(obj); */
-            localStorage.setItem("obj", JSON.stringify(obj));
+            localStorage.setItem("obj1", JSON.stringify(obj1));
         })
         .catch(function (err) {
             console.error(err);
         });
 
 }
-setInterval('ft(appi)', 60000);
+function ft2(appi) {
+
+    fetch(appi)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            obj2 = data;
+
+            /*  console.log(obj); */
+            localStorage.setItem("obj2", JSON.stringify(obj2));
+        })
+        .catch(function (err) {
+            console.error(err);
+        });
+
+}
+function ft3(appi) {
+
+    fetch(appi)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            obj3 = data;
+
+            /*  console.log(obj); */
+            localStorage.setItem("obj3", JSON.stringify(obj3));
+        })
+        .catch(function (err) {
+            console.error(err);
+        });
+
+}
 
 
 
