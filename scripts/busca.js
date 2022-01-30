@@ -298,16 +298,16 @@ function recibir() {
                                     <h4 style="text-align: right">Pendientes: ${newArray[0].DIA12}</h4>
                                 
                                 <div class="meter azul meterDerecha" id="">
-                                    <span class="animate" style="width: ${(parseInt(newArray[0].DIA12)*100)/9}%"></span>
+                                    <span class="animate" style="width: ${(parseInt(newArray[0].DIA12)*100)/10}%"></span>
                                 </div>
                                 <br>
                                 
                                 <div class="meter verde" id="">
-                                    <span class="animate" style="width: ${(parseInt(9-newArray[0].DIA12)*100)/9}%"></span>
+                                    <span class="animate" style="width: ${(parseInt(10-newArray[0].DIA12)*100)/10}%"></span>
                                 </div>
                                 <br>
                                 
-                                <h4>Completadas: ${9-newArray[0].DIA12}</h4>
+                                <h4>Completadas: ${10-newArray[0].DIA12}</h4>
                                
                                
                         </div>
@@ -1091,7 +1091,7 @@ function recibir() {
                 xAxes: [{
                     ticks: {
                         suggestedMin: 0,
-                        suggestedMax: 9,
+                        suggestedMax: 10,
                         stepSize: 0.1
                     }
                 }]
