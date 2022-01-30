@@ -1318,7 +1318,7 @@ function recibir() {
                     datasets: [{
                             label: 'Calificación',
                             data: [newArray[0].CUESTIONARIO4, newArray[0].CUESTIONARIO5, newArray[0].CUESTIONARIO6],
-                        ],
+                        
                         backgroundColor: [
                             'rgba(3, 106, 255, 0.6)',
                             'rgba(27, 15, 255, 0.6)',
