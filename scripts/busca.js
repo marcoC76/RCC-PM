@@ -48,10 +48,14 @@ function cambiaMundo(num) {
         document.body.className = 'fondo1';
         obj = obj1;
 
-       /*  appi = "https://script.googleusercontent.com/macros/echo?user_content_key=F50kUuixg_1_YNRBwi-XJB9Irsas9MzbLt4HIRZSSQW6mLPfwDXhVX1mvQ0tFXI9qN3e22ahv33gsDNlgmxmCNfjzRWAR42Hm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnH7FvHuoCA3aY6oYh_uPeR7OGIv6mE7OArfLpHEi2SkZG7auUhcX8GvYge8pF1VBKFasVhBWVkFc&lib=MlfAK7sYzDUKhAPiLWJ3BQCiYTb7JmIRw";
-        ft(appi); */
+        /*  appi = "https://script.googleusercontent.com/macros/echo?user_content_key=F50kUuixg_1_YNRBwi-XJB9Irsas9MzbLt4HIRZSSQW6mLPfwDXhVX1mvQ0tFXI9qN3e22ahv33gsDNlgmxmCNfjzRWAR42Hm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnH7FvHuoCA3aY6oYh_uPeR7OGIv6mE7OArfLpHEi2SkZG7auUhcX8GvYge8pF1VBKFasVhBWVkFc&lib=MlfAK7sYzDUKhAPiLWJ3BQCiYTb7JmIRw";
+         ft(appi); */
         document.getElementById("resultado").innerHTML = `                                                    
                                                             <div class="card">
+                                                            <div onclick="mundoInfo();" id="mundoActual" class="cost">
+                        
+                                                            Dimensión ${localStorage.getItem("mundo")}
+                                                        </div>
                                                                 <br>
                                                                 <h1>
                                                                     Ingresa un ID valido
@@ -68,6 +72,10 @@ function cambiaMundo(num) {
         ft(appi); */
         document.getElementById("resultado").innerHTML = `
                                                             <div class="card">
+                                                            <div onclick="mundoInfo();" id="mundoActual" class="cost">
+                        
+                                                            Dimensión ${localStorage.getItem("mundo")}
+                                                        </div>
                                                                 <br>
                                                                 <h1>
                                                                     Ingresa un ID valido
@@ -80,10 +88,14 @@ function cambiaMundo(num) {
         console.log(localStorage.getItem("mundo"));
         document.body.className = 'fondo3';
         obj = obj3;
-       /*  appi = "https://script.google.com/macros/s/AKfycbwh4AaAthKZ9R9n0aaYdXa4GnINTOWVImp1s9C5U6ZifKUBw6o2/exec";
-        ft(appi); */
+        /*  appi = "https://script.google.com/macros/s/AKfycbwh4AaAthKZ9R9n0aaYdXa4GnINTOWVImp1s9C5U6ZifKUBw6o2/exec";
+         ft(appi); */
         document.getElementById("resultado").innerHTML = `
                                                             <div class="card">
+                                                            <div onclick="mundoInfo();" id="mundoActual" class="cost">
+                        
+                                                            Dimensión ${localStorage.getItem("mundo")}
+                                                        </div>
                                                                 <br>
                                                                 <h1>
                                                                     Ingresa un ID valido
@@ -110,6 +122,7 @@ function ft1(appi) {
         });
 
 }
+
 function ft2(appi) {
 
     fetch(appi)
@@ -127,6 +140,7 @@ function ft2(appi) {
         });
 
 }
+
 function ft3(appi) {
 
     fetch(appi)
@@ -188,13 +202,13 @@ function recibir() {
                         </div>
                         <div class="abilities insignias" >
                            Resumen:
-                        <hr>
+                        
 
                             
                                 <canvas id="resumen" width="100%" height="70hv"></canvas>
                             
                         </div>
-                        <div class="insignias">Tus monstruos: <hr>
+                        <div class="insignias">Tus monstruos:
                             <center id="centro">
                                 <img onclick="cuestInfo();" id="cuest" title="Misión cuestionarios" src="images/sinInsgCuest.png" />
                                 <img onclick="actInfo();" id="act" title="Misión actividades" src="images/sinInsgAct.png" />
@@ -281,13 +295,20 @@ function recibir() {
                                     </h2>
                                    <canvas id="quemado" width="100%" height="70hv"></canvas>
                             </center>
-                                <div class="meter gris" id="">
+                                    <h4 style="text-align: right">Pendientes: ${newArray[0].DIA12}</h4>
+                                
+                                <div class="meter azul meterDerecha" id="">
                                     <span class="animate" style="width: ${(parseInt(newArray[0].DIA12)*100)/9}%"></span>
                                 </div>
                                 <br>
-                                <center>
-                                <h3>Tareas pendientes: ${newArray[0].DIA12}</h3>
-                                </center>
+                                
+                                <div class="meter verde" id="">
+                                    <span class="animate" style="width: ${(parseInt(9-newArray[0].DIA12)*100)/9}%"></span>
+                                </div>
+                                <br>
+                                
+                                <h4>Completadas: ${9-newArray[0].DIA12}</h4>
+                               
                                
                         </div>
                         

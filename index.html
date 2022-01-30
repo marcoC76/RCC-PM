@@ -56,6 +56,12 @@
       box-shadow: inset 0 -1px 1px rgba(255, 255, 255, 0.3);
     }
 
+    .meterDerecha {
+      transform: rotateY(-180deg);
+      /* margen inferior a menos 55 pixeles */
+      margin-bottom: -55px;
+    }
+
     .meter>span {
       display: block;
       height: 100%;
@@ -250,6 +256,10 @@
 
   <div id="resultado">
     <div class="card">
+      <div onclick="mundoInfo();" id="mundoActual" class="cost">
+
+        Dimensión 1
+      </div>
       <br>
       <h1>
         Ingresa un ID valido
@@ -272,50 +282,20 @@
         </a>
       </span>
       <span>
-        <a href="#" onclick="cambiaMundo(2); m(1);">
+        <!--TODO:         habiliatar para el periodo 2 -->
+        <!-- <a href="#" onclick="cambiaMundo(2); m(1);" >
           Dimensión <span class="MDos">2</span>
-        </a>
-      </span><span>
-        <a href="#" onclick="cambiaMundo(3); m(2);">
+        </a> -->
+      </span>
+      <span>
+        <!--TODO:         habiliatar para el periodo 3 -->
+        <!--  <a href="#" onclick="cambiaMundo(3); m(2);" >
           Dimensión <span class="MTres">3</span>
-        </a>
+        </a> -->
       </span>
     </div>
   </div>
-  <!--  <div id="miModal2" class="modal">
-      <div class="modal-contenido">
-        <a href="#"><img src="images/prompt_no.png" alt=""></a>
-        <ul style="list-style-type: none;">
-          <h4>Evaluación</h4>
-          <li>Cuestionarios: 20% <span>200 puntos</span>
-          </li>
-          <li>Actividades: 25% <span>250 puntos</span>
-          </li>
-          <li>Bitácora: 25% <span>250 puntos</span></li>
-          <li>Proyecto: 30% <span>300 puntos</span></li>
-        </ul>
-      </div>
-    </div>
-    <div id="container-floating">
-      <div class="nd1 nds" data-toggle="tooltip" data-placement="left"><img class="reminder">
-        <p class="letter">Actividades 25% = 250p</p>
-      </div>
-      <div class="nd2 nds" data-toggle="tooltip" data-placement="left"><img class="reminder">
-        <p class="letter">Proyecto 30% = 300p</p>
-      </div>
-      <div class="nd3 nds" data-toggle="tooltip" data-placement="left"><img class="reminder">
-        <p class="letter">Cuestionarios 20% = 200p</p>
-      </div>
-      <div class="nd4 nds" data-toggle="tooltip" data-placement="left"><img class="reminder">
-        <p class="letter">Bitácora 25% = 250p</p>
-      </div>
-  
-      <div id="floating-button" data-toggle="tooltip" data-placement="left">
-        <p class="plus">+</p>
-        <p class="edit">-</p>
-      </div>
-  
-    </div> -->
+ 
   <!-- <a id="goTop" href="#position">^</a> -->
 
   <footer id="footer">
@@ -499,7 +479,7 @@
       }
     });
 
-    
+
   </script>
 
   <script>
