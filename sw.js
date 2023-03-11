@@ -31,7 +31,10 @@ this.addEventListener("fetch", function(event) {
       })
       .catch(function() {
         return caches.match(event.request).then(function(response) {
-          return response || caches.match(offlineURL);
+          if (response) {
+            return response;
+          }
+          return caches.match(offlineURL);
         });
       })
   );
