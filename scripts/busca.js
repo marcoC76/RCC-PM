@@ -12,15 +12,16 @@ var appi2 = "https://script.google.com/macros/s/AKfycby_mP3ow6lHHhp5KoZ2cp-JvapW
 var appi3 = "https://script.google.com/macros/s/AKfycbwh4AaAthKZ9R9n0aaYdXa4GnINTOWVImp1s9C5U6ZifKUBw6o2/exec";
 
 
-ft1(appi1);
-ft2(appi2);
-ft3(appi3);
+
 
 
 
 /* window.onload = inicio; */
 
 function inicio() {
+	ft1(appi1);
+ft2(appi2);
+ft3(appi3);
     obj = JSON.parse(localStorage.getItem("obj1"));
     localStorage.setItem("mundo", 1);
     if (navigator.onLine) {
