@@ -22,7 +22,7 @@ function inicio() {
 	ft1(appi1);
 ft2(appi2);
 ft3(appi3);
-    obj = JSON.parse(localStorage.getItem("obj1"));
+    obj = obj1;
     localStorage.setItem("mundo", 1);
     if (navigator.onLine) {
         // el navegador está conectado a la red
