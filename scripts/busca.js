@@ -20,15 +20,51 @@ var appi3 = "https://script.google.com/macros/s/AKfycbwh4AaAthKZ9R9n0aaYdXa4GnIN
 /* window.onload = inicio; */
 
 function inicio() {
-ft1(appi1);
-ft2(appi2);
-ft3(appi3);
-    obj = JSON.parse(localStorage.getItem("obj1")) ;
+/* comprbando que el usuario tiene los datos mas actuales */
+    if ("fechaGuadada" in localStorage) {
+        /* comparar */
+        fechaActual = new Date();
+        var fechaGuardada = localStorage.getItem('fechaGuadada');
+        // Obtener el día, mes y año de la fecha guardada
+        var fechaGuardadaDate = new Date(fechaGuardada);
+        var diaGuardado = fechaGuardadaDate.getDate();
+        var mesGuardado = fechaGuardadaDate.getMonth() + 1; // Agregar 1 porque los meses comienzan en 0
+        var anioGuardado = fechaGuardadaDate.getFullYear();
+
+        // Obtener el día, mes y año de la fecha actual
+        var diaActual = fechaActual.getDate();
+        var mesActual = fechaActual.getMonth() + 1; // Agregar 1 porque los meses comienzan en 0
+        var anioActual = fechaActual.getFullYear();
+
+        // Comparar los valores de día, mes y año
+        if (diaGuardado === diaActual && mesGuardado === mesActual && anioGuardado === anioActual) {
+            return null;
+        } else {
+            localStorage.setItem('fechaGuadada', fechaActual);
+            alert("¡Ups! Parece que los datos no están actualizados. Vamos a actualizar la página para obtener las calificaciones más recientes. Por favor, espera un momento...");
+
+            // Recargar la página después de 3 segundos
+            setTimeout(function () {
+                location.reload();
+            }, 500);
+        }
+    } else {
+        /* guardar la fecah de hoy */
+        fechaActual = new Date();
+        /* var fechaActualStr = fechaActual.toISOString(); */
+        localStorage.setItem('fechaGuadada', fechaActual);
+        /* alert(fechaActual) */
+    }
+
+    ft1(appi1);
+    ft2(appi2);
+    ft3(appi3);
+    obj = JSON.parse(localStorage.getItem("obj1"));
     /* fechaActual = new Date();
     var fechaActualStr = fechaActual.toISOString(); */
-   /*  if (obj[0].Def != 0) {
-        compararFechas();
-    } */
+    /*  if (obj[0].Def != 0) {
+         compararFechas();
+     } */
     localStorage.setItem("mundo", 1);
     if (navigator.onLine) {
         // el navegador está conectado a la red
@@ -1328,28 +1364,28 @@ function recibir() {
         });
         var ctx = document.getElementById("cuestChart");
         var cuestChart = new Chart(ctx, {
-                type: 'horizontalBar',
-                data: {
-                    labels: ["Cuest4", "Cuest5", "Cuest6"],
-                    datasets: [{
-                            label: 'Calificación',
-                            data: [newArray[0].CUESTIONARIO4, newArray[0].CUESTIONARIO5, newArray[0].CUESTIONARIO6],
-                        
-                        backgroundColor: [
-                            'rgba(3, 106, 255, 0.6)',
-                            'rgba(27, 15, 255, 0.6)',
-                            'rgba(50, 65, 119, 0.6)'
+            type: 'horizontalBar',
+            data: {
+                labels: ["Cuest4", "Cuest5", "Cuest6"],
+                datasets: [{
+                    label: 'Calificación',
+                    data: [newArray[0].CUESTIONARIO4, newArray[0].CUESTIONARIO5, newArray[0].CUESTIONARIO6],
+
+                    backgroundColor: [
+                        'rgba(3, 106, 255, 0.6)',
+                        'rgba(27, 15, 255, 0.6)',
+                        'rgba(50, 65, 119, 0.6)'
 
 
-                            /*
-                            ,
-                            'rgba(50, 65, 119, 0.6)'
-                            'rgba(92, 171, 137, 0.6)',
-                            'rgba(64, 146, 111, 0.6)',
-                            'rgba(42, 120, 87, 0.6)' ,
-                            'rgba(24, 95, 65, 0.6)' */
-                        ]
-                    }]
+                        /*
+                        ,
+                        'rgba(50, 65, 119, 0.6)'
+                        'rgba(92, 171, 137, 0.6)',
+                        'rgba(64, 146, 111, 0.6)',
+                        'rgba(42, 120, 87, 0.6)' ,
+                        'rgba(24, 95, 65, 0.6)' */
+                    ]
+                }]
             },
             options: {
                 scales: {
@@ -1369,719 +1405,719 @@ function recibir() {
                 } */
             }
         });
-    var ctx = document.getElementById("proChart");
-    var proChart = new Chart(ctx, {
-        type: 'doughnut',
-        data: {
-            labels: ["Proyecto", ""],
-            datasets: [{
-                label: 'Calificación',
-                data: [newArray[0].PROYECTO, 10 - newArray[0].PROYECTO],
-                backgroundColor: [
-                    'rgba(255, 227, 194, 0.6)'
+        var ctx = document.getElementById("proChart");
+        var proChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ["Proyecto", ""],
+                datasets: [{
+                    label: 'Calificación',
+                    data: [newArray[0].PROYECTO, 10 - newArray[0].PROYECTO],
+                    backgroundColor: [
+                        'rgba(255, 227, 194, 0.6)'
 
-                ]
-            }]
-        }
-    });
-    /* var ctx = document.getElementById("plaChart");
-    var proChart = new Chart(ctx, {
-        type: 'pie',
-        data: {
-            labels: ["Plataforma", ""],
-            datasets: [{
-                label: 'Calificación',
-                data: [newArray[0].PLATAFORMA, 10 - newArray[0].PLATAFORMA],
-                backgroundColor: [
-                    'rgba(255, 206, 86, 0.6)'
-
-                ]
-            }]
-        }
-    }); */
-    var ctx = document.getElementById("bitChart");
-    var bitChart = new Chart(ctx, {
-        type: 'doughnut',
-        data: {
-            labels: ["Bitácora", ""],
-            datasets: [{
-                label: 'Calificación',
-                data: [newArray[0].BITACORA, 10 - newArray[0].BITACORA],
-                backgroundColor: [
-                    'rgba(153, 102, 255, 0.6)'
-                ]
-            }]
-        }
-
-    });
-
-    var ctx = document.getElementById("extraChart");
-    var extraChart = new Chart(ctx, {
-        type: 'horizontalBar',
-        data: {
-            labels: ["Extra1", "Extra2"],
-            datasets: [{
-                label: 'Calificación',
-                data: [newArray[0].PUNTOEX1, newArray[0].PUNTOEX2],
-                backgroundColor: [
-                    'rgba(80, 78, 78, 0.6)',
-                    'rgba(68, 65, 65, 0.6)'
-                    /* ,
-                                            'rgba(50, 65, 119, 0.6)'
-                                            'rgba(22, 36, 89, 0.6)',
-                                            'rgba(5, 17, 57, 0.6)' */
-                ]
-            }]
-        },
-        options: {
-            scales: {
-                xAxes: [{
-                    ticks: {
-                        suggestedMin: 0,
-                        suggestedMax: 1
-                    }
+                    ]
                 }]
             }
-            /* scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }]
-            } */
-        }
-    });
-} else if (localStorage.getItem("mundo") == 3) {
+        });
+        /* var ctx = document.getElementById("plaChart");
+        var proChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ["Plataforma", ""],
+                datasets: [{
+                    label: 'Calificación',
+                    data: [newArray[0].PLATAFORMA, 10 - newArray[0].PLATAFORMA],
+                    backgroundColor: [
+                        'rgba(255, 206, 86, 0.6)'
 
-    /*generar paleta http://paletton.com/#uid=55C050kkZm31qv5aYqCuJhzVNc+ */
-    var ctx = document.getElementById("actChart");
-    var actChart = new Chart(ctx, {
-        type: 'horizontalBar',
-        data: {
-            labels: ["Act7", "Act8", "Act9"],
-            datasets: [{
-                label: 'Calificación',
-                data: [newArray[0].ACTIVIDAD7, newArray[0].ACTIVIDAD8, newArray[0].ACTIVIDAD9],
-                backgroundColor: [
-                    'rgba(243, 145, 159, 0.6)',
-                    'rgba(208, 97, 112, 0.6)',
-                    'rgba(167, 58, 73, 0.6)'
-
-
-                    /*  ,
-                        
-                        
-                        'rgba(56, 2, 59, 0.6)',
-                        'rgba(162, 136, 227, 0.6)'
-                       ,
-                                                'rgba(187, 213, 237, 0.6)',
-                                                'rgba(206, 253, 255, 0.6)',
-                                                                        'rgba(204, 255, 203, 0.6)',
-                                                                        'rgba(186, 232, 185, 0.6)' */
-                ]
-            }]
-        },
-        options: {
-            scales: {
-                xAxes: [{
-                    ticks: {
-                        suggestedMin: 0,
-                        suggestedMax: 10
-                    }
+                    ]
                 }]
             }
-            /*  scales: {
-                 yAxes: [{
-                     ticks: {
-                         beginAtZero: true
-                     }
-                 }]
-             } */
-        }
-    });
-    var ctx = document.getElementById("cuestChart");
-    var cuestChart = new Chart(ctx, {
-        type: 'horizontalBar',
-        data: {
-            labels: ["Cuest7", "Cuest8", "Cuest9"],
-            datasets: [{
-                label: 'Calificación',
-                data: [newArray[0].CUESTIONARIO7, newArray[0].CUESTIONARIO8, newArray[0].CUESTIONARIO9],
-                backgroundColor: [
-                    'rgba(3, 106, 255, 0.6)',
-                    'rgba(27, 15, 255, 0.6)',
-                    'rgba(50, 65, 119, 0.6)'
-                    /*,
-                     
-                    'rgba(64, 146, 111, 0.6)',
-                     'rgba(42, 120, 87, 0.6)'
-                      ,
-                                             'rgba(24, 95, 65, 0.6)' */
-                ]
-            }]
-        },
-        options: {
-            scales: {
-                xAxes: [{
-                    ticks: {
-                        suggestedMin: 0,
-                        suggestedMax: 10
-                    }
+        }); */
+        var ctx = document.getElementById("bitChart");
+        var bitChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ["Bitácora", ""],
+                datasets: [{
+                    label: 'Calificación',
+                    data: [newArray[0].BITACORA, 10 - newArray[0].BITACORA],
+                    backgroundColor: [
+                        'rgba(153, 102, 255, 0.6)'
+                    ]
                 }]
             }
-            /* scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
+
+        });
+
+        var ctx = document.getElementById("extraChart");
+        var extraChart = new Chart(ctx, {
+            type: 'horizontalBar',
+            data: {
+                labels: ["Extra1", "Extra2"],
+                datasets: [{
+                    label: 'Calificación',
+                    data: [newArray[0].PUNTOEX1, newArray[0].PUNTOEX2],
+                    backgroundColor: [
+                        'rgba(80, 78, 78, 0.6)',
+                        'rgba(68, 65, 65, 0.6)'
+                        /* ,
+                                                'rgba(50, 65, 119, 0.6)'
+                                                'rgba(22, 36, 89, 0.6)',
+                                                'rgba(5, 17, 57, 0.6)' */
+                    ]
                 }]
-            } */
-        }
-    });
-    var ctx = document.getElementById("proChart");
-    var proChart = new Chart(ctx, {
-        type: 'doughnut',
-        data: {
-            labels: ["Proyecto", ""],
-            datasets: [{
-                label: 'Calificación',
-                data: [newArray[0].PROYECTO, 10 - newArray[0].PROYECTO],
-                backgroundColor: [
-                    'rgba(54, 162, 235, 0.6)'
+            },
+            options: {
+                scales: {
+                    xAxes: [{
+                        ticks: {
+                            suggestedMin: 0,
+                            suggestedMax: 1
+                        }
+                    }]
+                }
+                /* scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                } */
+            }
+        });
+    } else if (localStorage.getItem("mundo") == 3) {
 
-                ]
-            }]
-        }
-    });
-    /* var ctx = document.getElementById("plaChart");
-    var proChart = new Chart(ctx, {
-        type: 'pie',
-        data: {
-            labels: ["Plataforma", ""],
-            datasets: [{
-                label: 'Calificación',
-                data: [newArray[0].PLATAFORMA, 10 - newArray[0].PLATAFORMA],
-                backgroundColor: [
-                    'rgba(255, 206, 86, 0.6)'
+        /*generar paleta http://paletton.com/#uid=55C050kkZm31qv5aYqCuJhzVNc+ */
+        var ctx = document.getElementById("actChart");
+        var actChart = new Chart(ctx, {
+            type: 'horizontalBar',
+            data: {
+                labels: ["Act7", "Act8", "Act9"],
+                datasets: [{
+                    label: 'Calificación',
+                    data: [newArray[0].ACTIVIDAD7, newArray[0].ACTIVIDAD8, newArray[0].ACTIVIDAD9],
+                    backgroundColor: [
+                        'rgba(243, 145, 159, 0.6)',
+                        'rgba(208, 97, 112, 0.6)',
+                        'rgba(167, 58, 73, 0.6)'
 
-                ]
-            }]
-        }
-    }); */
-    var ctx = document.getElementById("bitChart");
-    var bitChart = new Chart(ctx, {
-        type: 'doughnut',
-        data: {
-            labels: ["Bitácora", ""],
-            datasets: [{
-                label: 'Calificación',
-                data: [newArray[0].BITACORA, 10 - newArray[0].BITACORA],
-                backgroundColor: [
-                    'rgba(153, 102, 255, 0.6)'
-                ]
-            }]
-        }
 
-    });
+                        /*  ,
+                            
+                            
+                            'rgba(56, 2, 59, 0.6)',
+                            'rgba(162, 136, 227, 0.6)'
+                           ,
+                                                    'rgba(187, 213, 237, 0.6)',
+                                                    'rgba(206, 253, 255, 0.6)',
+                                                                            'rgba(204, 255, 203, 0.6)',
+                                                                            'rgba(186, 232, 185, 0.6)' */
+                    ]
+                }]
+            },
+            options: {
+                scales: {
+                    xAxes: [{
+                        ticks: {
+                            suggestedMin: 0,
+                            suggestedMax: 10
+                        }
+                    }]
+                }
+                /*  scales: {
+                     yAxes: [{
+                         ticks: {
+                             beginAtZero: true
+                         }
+                     }]
+                 } */
+            }
+        });
+        var ctx = document.getElementById("cuestChart");
+        var cuestChart = new Chart(ctx, {
+            type: 'horizontalBar',
+            data: {
+                labels: ["Cuest7", "Cuest8", "Cuest9"],
+                datasets: [{
+                    label: 'Calificación',
+                    data: [newArray[0].CUESTIONARIO7, newArray[0].CUESTIONARIO8, newArray[0].CUESTIONARIO9],
+                    backgroundColor: [
+                        'rgba(3, 106, 255, 0.6)',
+                        'rgba(27, 15, 255, 0.6)',
+                        'rgba(50, 65, 119, 0.6)'
+                        /*,
+                         
+                        'rgba(64, 146, 111, 0.6)',
+                         'rgba(42, 120, 87, 0.6)'
+                          ,
+                                                 'rgba(24, 95, 65, 0.6)' */
+                    ]
+                }]
+            },
+            options: {
+                scales: {
+                    xAxes: [{
+                        ticks: {
+                            suggestedMin: 0,
+                            suggestedMax: 10
+                        }
+                    }]
+                }
+                /* scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                } */
+            }
+        });
+        var ctx = document.getElementById("proChart");
+        var proChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ["Proyecto", ""],
+                datasets: [{
+                    label: 'Calificación',
+                    data: [newArray[0].PROYECTO, 10 - newArray[0].PROYECTO],
+                    backgroundColor: [
+                        'rgba(54, 162, 235, 0.6)'
 
-    var ctx = document.getElementById("extraChart");
-    var extraChart = new Chart(ctx, {
-        type: 'horizontalBar',
-        data: {
-            labels: ["Extra1", "Extra2"],
-            datasets: [{
-                label: 'Calificación',
-                data: [newArray[0].PUNTOEX1, newArray[0].PUNTOEX2],
-                backgroundColor: [
-                    'rgba(80, 78, 78, 0.6)',
-                    'rgba(68, 65, 65, 0.6)'
-                    /* ,
-                                            'rgba(50, 65, 119, 0.6)'
-                                            'rgba(22, 36, 89, 0.6)',
-                                            'rgba(5, 17, 57, 0.6)' */
-                ]
-            }]
-        },
-        options: {
-            scales: {
-                xAxes: [{
-                    ticks: {
-                        suggestedMin: 0,
-                        suggestedMax: 1
-                    }
+                    ]
                 }]
             }
-            /* scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
+        });
+        /* var ctx = document.getElementById("plaChart");
+        var proChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ["Plataforma", ""],
+                datasets: [{
+                    label: 'Calificación',
+                    data: [newArray[0].PLATAFORMA, 10 - newArray[0].PLATAFORMA],
+                    backgroundColor: [
+                        'rgba(255, 206, 86, 0.6)'
+
+                    ]
                 }]
-            } */
+            }
+        }); */
+        var ctx = document.getElementById("bitChart");
+        var bitChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ["Bitácora", ""],
+                datasets: [{
+                    label: 'Calificación',
+                    data: [newArray[0].BITACORA, 10 - newArray[0].BITACORA],
+                    backgroundColor: [
+                        'rgba(153, 102, 255, 0.6)'
+                    ]
+                }]
+            }
+
+        });
+
+        var ctx = document.getElementById("extraChart");
+        var extraChart = new Chart(ctx, {
+            type: 'horizontalBar',
+            data: {
+                labels: ["Extra1", "Extra2"],
+                datasets: [{
+                    label: 'Calificación',
+                    data: [newArray[0].PUNTOEX1, newArray[0].PUNTOEX2],
+                    backgroundColor: [
+                        'rgba(80, 78, 78, 0.6)',
+                        'rgba(68, 65, 65, 0.6)'
+                        /* ,
+                                                'rgba(50, 65, 119, 0.6)'
+                                                'rgba(22, 36, 89, 0.6)',
+                                                'rgba(5, 17, 57, 0.6)' */
+                    ]
+                }]
+            },
+            options: {
+                scales: {
+                    xAxes: [{
+                        ticks: {
+                            suggestedMin: 0,
+                            suggestedMax: 1
+                        }
+                    }]
+                }
+                /* scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                } */
+            }
+        });
+    }
+
+    /* habilidades */
+    /* if (newArray[0].HABILIDAD1 == 1) {
+        document.getElementById("habilidad1").style.textDecoration = "line-through";
+
+    }
+    if (newArray[0].HABILIDAD2 == 1) {
+        document.getElementById("habilidad2").style.textDecoration = "line-through";
+    }
+    if (newArray[0].HABILIDAD3 == 1) {
+        document.getElementById("habilidad3").style.textDecoration = "line-through";
+    } */
+
+
+
+
+
+    var caracter = "";
+    if (localStorage.getItem("mundo") == 1) {
+
+        animaHover = "";
+        switch (newArray[0].AVATAR) {
+            case 1:
+                /* caracter = "images/avatarAnimado.gif"; */
+                caracter = "images/caracter.png";
+                break;
+            case 2:
+                caracter = "images/caracter_H.png";
+                break;
+            case 3:
+                caracter = "images/caracter2.png";
+                break;
+            case 4:
+                caracter = "images/caracter2_H.png";
+                break;
+            case 5:
+                caracter = "images/caracter3.png";
+                break;
+            case 6:
+                caracter = "images/caracter3_H.png";
+                break;
+            case 7:
+                caracter = "images/caracter4.png";
+                break;
+            case 8:
+                caracter = "images/caracter4_H.png";
+                break;
+            case 9:
+                caracter = "images/caracter5.png";
+                break;
+            case 10:
+                caracter = "images/caracter5_H.png";
+                break;
+            case 11:
+                caracter = "images/caracter6.png";
+                break;
+            case 12:
+                caracter = "images/caracter6_H.png";
+                break;
+            case 13:
+                caracter = "images/caracter7.png";
+                break;
+            case 14:
+                caracter = "images/caracter7_H.png";
+                break;
+            case 15:
+                caracter = "images/caracter8.png";
+                break;
+            case 16:
+                caracter = "images/caracter8_H.png";
+                break;
+            case 17:
+                caracter = "images/caracter9.png";
+                break;
+            case 18:
+                caracter = "images/caracter9_H.png";
+                break;
+            case 19:
+                caracter = "images/caracter10.png";
+                break;
+            case 20:
+                caracter = "images/caracter10_H.png";
+                break;
+            case 21:
+                caracter = "images/caracter11.png";
+                break;
+            case 22:
+                caracter = "images/caracter11_H.png";
+                break;
+            case 23:
+                caracter = "images/caracter12.png";
+                break;
+            case 24:
+                caracter = "images/caracter12_H.png";
+                break;
+            case 25:
+                caracter = "images/caracter13.png";
+                break;
+            case 26:
+                caracter = "images/caracter13_H.png";
+                break;
+            case 0:
+                caracter = "images/caracter0.png";
+                break;
+            default:
+                caracter = "images/caracter.png";
+                break;
         }
-    });
-}
+    } else if (localStorage.getItem("mundo") == 2) {
 
-/* habilidades */
-/* if (newArray[0].HABILIDAD1 == 1) {
-    document.getElementById("habilidad1").style.textDecoration = "line-through";
+        switch (newArray[0].AVATAR) {
+            case 1:
+                /* caracter = "images/avatarAnimado.gif"; */
+                caracter = "images/caracter.png";
+                break;
+            case 2:
+                caracter = "images/caracter_H.png";
+                break;
+            case 3:
+                caracter = "images/caracter2.png";
+                break;
+            case 4:
+                caracter = "images/caracter2_H.png";
+                break;
+            case 5:
+                caracter = "images/caracter3.png";
+                break;
+            case 6:
+                caracter = "images/caracter3_H.png";
+                break;
+            case 7:
+                caracter = "images/caracter4.png";
+                break;
+            case 8:
+                caracter = "images/caracter4_H.png";
+                break;
+            case 9:
+                caracter = "images/caracter5.png";
+                break;
+            case 10:
+                caracter = "images/caracter5_H.png";
+                break;
+            case 11:
+                caracter = "images/caracter6.png";
+                break;
+            case 12:
+                caracter = "images/caracter6_H.png";
+                break;
+            case 13:
+                caracter = "images/caracter7.png";
+                break;
+            case 14:
+                caracter = "images/caracter7_H.png";
+                break;
+            case 15:
+                caracter = "images/caracter8.png";
+                break;
+            case 16:
+                caracter = "images/caracter8_H.png";
+                break;
+            case 17:
+                caracter = "images/caracter9.png";
+                break;
+            case 18:
+                caracter = "images/caracter9_H.png";
+                break;
+            case 19:
+                caracter = "images/caracter10.png";
+                break;
+            case 20:
+                caracter = "images/caracter10_H.png";
+                break;
+            case 21:
+                caracter = "images/caracter11.png";
+                break;
+            case 22:
+                caracter = "images/caracter11_H.png";
+                break;
+            case 23:
+                caracter = "images/caracter12.png";
+                break;
+            case 24:
+                caracter = "images/caracter12_H.png";
+                break;
+            case 25:
+                caracter = "images/caracter13.png";
+                break;
+            case 26:
+                caracter = "images/caracter13_H.png";
+                break;
+            case 0:
+                caracter = "images/caracter0.png";
+                break;
+            default:
+                caracter = "images/caracter.png";
+                break;
+        }
+    } else if (localStorage.getItem("mundo") == 3) {
+        switch (newArray[0].AVATAR) {
+            case 1:
+                /* caracter = "images/avatarAnimado.gif"; */
+                caracter = "images/caracter.png";
+                break;
+            case 2:
+                caracter = "images/caracter_H.png";
+                break;
+            case 3:
+                caracter = "images/caracter2.png";
+                break;
+            case 4:
+                caracter = "images/caracter2_H.png";
+                break;
+            case 5:
+                caracter = "images/caracter3.png";
+                break;
+            case 6:
+                caracter = "images/caracter3_H.png";
+                break;
+            case 7:
+                caracter = "images/caracter4.png";
+                break;
+            case 8:
+                caracter = "images/caracter4_H.png";
+                break;
+            case 9:
+                caracter = "images/caracter5.png";
+                break;
+            case 10:
+                caracter = "images/caracter5_H.png";
+                break;
+            case 11:
+                caracter = "images/caracter6.png";
+                break;
+            case 12:
+                caracter = "images/caracter6_H.png";
+                break;
+            case 13:
+                caracter = "images/caracter7.png";
+                break;
+            case 14:
+                caracter = "images/caracter7_H.png";
+                break;
+            case 15:
+                caracter = "images/caracter8.png";
+                break;
+            case 16:
+                caracter = "images/caracter8_H.png";
+                break;
+            case 17:
+                caracter = "images/caracter9.png";
+                break;
+            case 18:
+                caracter = "images/caracter9_H.png";
+                break;
+            case 19:
+                caracter = "images/caracter10.png";
+                break;
+            case 20:
+                caracter = "images/caracter10_H.png";
+                break;
+            case 21:
+                caracter = "images/caracter11.png";
+                break;
+            case 22:
+                caracter = "images/caracter11_H.png";
+                break;
+            case 23:
+                caracter = "images/caracter12.png";
+                break;
+            case 24:
+                caracter = "images/caracter12_H.png";
+                break;
+            case 25:
+                caracter = "images/caracter13.png";
+                break;
+            case 26:
+                caracter = "images/caracter13_H.png";
+                break;
+            case 0:
+                caracter = "images/caracter0.png";
+                break;
+            default:
+                caracter = "images/caracter.png";
+                break;
+        }
+    }
 
-}
-if (newArray[0].HABILIDAD2 == 1) {
-    document.getElementById("habilidad2").style.textDecoration = "line-through";
-}
-if (newArray[0].HABILIDAD3 == 1) {
-    document.getElementById("habilidad3").style.textDecoration = "line-through";
-} */
+    document.getElementById("caracter").src = caracter;
+
+    var estado = "";
+    if (newArray[0].FINAL < 6) {
+        estado = "REPROBADO";
+    } else {
+        estado = "APROBADO";
+    }
+    document.getElementById("estado").innerHTML = estado;
+
+    var reaccion = "";
+    if (newArray[0].FINAL == 0) {
+        reaccion = "images/reaccion_horror.png";
+    } else if (newArray[0].FINAL <= 2) {
+        reaccion = "images/reaccion_verguenza.png";
+    } else if (newArray[0].FINAL <= 4) {
+        reaccion = "images/reaccion_desepcion.png";
+    } else if (newArray[0].FINAL == 5) {
+        reaccion = "images/reaccion_resignacion.png";
+    } else if (newArray[0].FINAL < 8) {
+        reaccion = "images/reaccion_esfuerzo.png";
+    } else if (newArray[0].FINAL < 10) {
+        reaccion = "images/reaccion_neutral.png";
+    } else if (newArray[0].FINAL == 10) {
+        reaccion = "images/reaccion_orgullo.png";
+    }
+    document.getElementById("reaccion").src = reaccion;
 
 
-
-
-
-var caracter = "";
-if (localStorage.getItem("mundo") == 1) {
-
-    animaHover = "";
+    var avatar = "";
+    var habilidad = "";
+    var descripcion = "";
     switch (newArray[0].AVATAR) {
         case 1:
-            /* caracter = "images/avatarAnimado.gif"; */
-            caracter = "images/caracter.png";
+            avatar = "images/personaje1.png";
+            /* habilidad = 'Pista en el examen 300<span style="font-family:Poke;font-size:0.6em;">$</span>'; */
+            descripcion = 'Ama la ciudad, su fortaleza es una memoria prodigiosa';
             break;
         case 2:
-            caracter = "images/caracter_H.png";
+            avatar = "images/personaje1_H.png";
+            /* habilidad = 'Otro intento 300<span style="font-family:Poke;font-size:0.6em;">$</span>'; */
+            descripcion = 'Imposible de engañar, siempre tiene mucho cuidado';
             break;
         case 3:
-            caracter = "images/caracter2.png";
+            avatar = "images/personaje2.png";
+            /* habilidad = 'Trampa en examen 300<span style="font-family:Poke;font-size:0.6em;">$</span>'; */
+            descripcion = 'Tiene mucho carisma y una envidiable ágilidad';
             break;
         case 4:
-            caracter = "images/caracter2_H.png";
+            avatar = "images/personaje2_H.png";
+            /* habilidad = 'Entregar un dia después 300<span style="font-family:Poke;font-size:0.6em;">$</span>'; */
+            descripcion = 'No olvida su cabeza porque la tiene pegada al cuello';
             break;
         case 5:
-            caracter = "images/caracter3.png";
+            avatar = "images/personaje3.png";
+            /* habilidad = 'Mas tiempo 300<span style="font-family:Poke;font-size:0.6em;">$</span>'; */
+            descripcion = 'Posee una voz encantadora pero también un carácter fuerte ';
             break;
         case 6:
-            caracter = "images/caracter3_H.png";
+            avatar = "images/personaje3_H.png";
+            /*  habilidad = 'Escuchar música 300<span style="font-family:Poke;font-size:0.6em;">$</span>'; */
+            descripcion = 'De pocas palabras pero muchas mas acciones';
             break;
         case 7:
-            caracter = "images/caracter4.png";
+            avatar = "images/personaje4.png";
+            /*  habilidad = 'Comer en clase 300<span style="font-family:Poke;font-size:0.6em;">$</span>'; */
+            descripcion = 'Su sigilo y ágilidad le dan una amplia ventaja';
             break;
         case 8:
-            caracter = "images/caracter4_H.png";
+            avatar = "images/personaje4_H.png";
+            /* habilidad = 'Otro intento 300<span style="font-family:Poke;font-size:0.6em;">$</span>'; */
+            descripcion = 'Muy fuerte, usa correctamente su astucia';
             break;
         case 9:
-            caracter = "images/caracter5.png";
+            avatar = "images/personaje5.png";
+            /* habilidad = 'Trampa en examen 300<span style="font-family:Poke;font-size:0.6em;">$</span>'; */
+            descripcion = 'Tiene una voluntad de hierro al mismo nivel de su rudeza';
             break;
         case 10:
-            caracter = "images/caracter5_H.png";
+            avatar = "images/personaje5_H.png";
+            /* habilidad = 'Entregar un dia después 300<span style="font-family:Poke;font-size:0.6em;">$</span>'; */
+            descripcion = 'Su mente prodigiosa le permite actuar con rápidez';
             break;
         case 11:
-            caracter = "images/caracter6.png";
+            avatar = "images/personaje6.png";
+            /* habilidad = 'Pista en el examen 300<span style="font-family:Poke;font-size:0.6em;">$</span>'; */
+            descripcion = 'Ama la ciudad, su fortaleza es una memoria prodigiosa';
             break;
         case 12:
-            caracter = "images/caracter6_H.png";
+            avatar = "images/personaje6_H.png";
+            /* habilidad = 'Mas tiempo 300<span style="font-family:Poke;font-size:0.6em;">$</span>'; */
+            descripcion = 'Su mente prodigiosa le permite actuar con rápidez';
             break;
         case 13:
-            caracter = "images/caracter7.png";
+            avatar = "images/personaje7.png";
+            /* habilidad = 'Escuchar música 300<span style="font-family:Poke;font-size:0.6em;">$</span>'; */
+            descripcion = 'Imposible de engañar, siempre tiene mucho cuidado';
             break;
         case 14:
-            caracter = "images/caracter7_H.png";
+            avatar = "images/personaje7_H.png";
+            /* habilidad = 'Comer en clase 300<span style="font-family:Poke;font-size:0.6em;">$</span>'; */
+            descripcion = 'Tiene mucho carisma y una envidiable ágilidad';
             break;
         case 15:
-            caracter = "images/caracter8.png";
+            avatar = "images/personaje8.png";
+            /* habilidad = 'Otro intento 300<span style="font-family:Poke;font-size:0.6em;">$</span>'; */
+            descripcion = 'No olvida su cabeza porque la tiene pegada al cuello';
             break;
         case 16:
-            caracter = "images/caracter8_H.png";
+            avatar = "images/personaje8_H.png";
+            /*  habilidad = 'Trampa en examen 300<span style="font-family:Poke;font-size:0.6em;">$</span>'; */
+            descripcion = 'Posee una voz encantadora pero también un carácter fuerte ';
             break;
         case 17:
-            caracter = "images/caracter9.png";
+            avatar = "images/personaje9.png";
+            /*  habilidad = 'Entregar un dia después 300<span style="font-family:Poke;font-size:0.6em;">$</span>'; */
+            descripcion = 'De pocas palabras pero muchas mas acciones';
             break;
         case 18:
-            caracter = "images/caracter9_H.png";
+            avatar = "images/personaje9_H.png";
+            /*  habilidad = 'Pista en el examen 300<span style="font-family:Poke;font-size:0.6em;">$</span>'; */
+            descripcion = 'Su sigilo y ágilidad le dan una amplia ventaja';
             break;
         case 19:
-            caracter = "images/caracter10.png";
+            avatar = "images/personaje10.png";
+            /*   habilidad = 'Mas tiempo 300<span style="font-family:Poke;font-size:0.6em;">$</span>'; */
+            descripcion = 'Muy fuerte, usa correctamente su astucia';
             break;
         case 20:
-            caracter = "images/caracter10_H.png";
+            avatar = "images/personaje10_H.png";
+            /*   habilidad = 'Escuchar música 300<span style="font-family:Poke;font-size:0.6em;">$</span>'; */
+            descripcion = 'Tiene una voluntad de hierro al mismo nivel de su rudeza';
             break;
         case 21:
-            caracter = "images/caracter11.png";
+            avatar = "images/personaje11.png";
+            /*   habilidad = 'Escuchar música 300<span style="font-family:Poke;font-size:0.6em;">$</span>'; */
+            descripcion = 'Su sigilo y ágilidad le dan una amplia ventaja';
             break;
         case 22:
-            caracter = "images/caracter11_H.png";
+            avatar = "images/personaje11_H.png";
+            /*   habilidad = 'Escuchar música 300<span style="font-family:Poke;font-size:0.6em;">$</span>'; */
+            descripcion = 'De pocas palabras pero muchas mas acciones';
             break;
         case 23:
-            caracter = "images/caracter12.png";
+            avatar = "images/personaje12.png";
+            /*   habilidad = 'Escuchar música 300<span style="font-family:Poke;font-size:0.6em;">$</span>'; */
+            descripcion = 'De pocas palabras pero muchas mas acciones';
             break;
         case 24:
-            caracter = "images/caracter12_H.png";
+            avatar = "images/personaje12_H.png";
+            /*   habilidad = 'Escuchar música 300<span style="font-family:Poke;font-size:0.6em;">$</span>'; */
+            descripcion = 'No olvida su cabeza porque la tiene pegada al cuello';
             break;
         case 25:
-            caracter = "images/caracter13.png";
+            avatar = "images/personaje13.png";
+            /*   habilidad = 'Escuchar música 300<span style="font-family:Poke;font-size:0.6em;">$</span>'; */
+            descripcion = 'Tiene una voluntad de hierro al mismo nivel de su rudeza';
             break;
         case 26:
-            caracter = "images/caracter13_H.png";
+            avatar = "images/personaje13_H.png";
+            /*   habilidad = 'Escuchar música 300<span style="font-family:Poke;font-size:0.6em;">$</span>'; */
+            descripcion = 'Tiene mucho carisma y una envidiable ágilidad';
             break;
         case 0:
-            caracter = "images/caracter0.png";
+            avatar = "images/personaje0.png";
+            /*   habilidad = 'Comer en clase 300<span style="font-family:Poke;font-size:0.6em;">$</span>'; */
+            descripcion = 'Único';
             break;
         default:
-            caracter = "images/caracter.png";
             break;
     }
-} else if (localStorage.getItem("mundo") == 2) {
-
-    switch (newArray[0].AVATAR) {
-        case 1:
-            /* caracter = "images/avatarAnimado.gif"; */
-            caracter = "images/caracter.png";
-            break;
-        case 2:
-            caracter = "images/caracter_H.png";
-            break;
-        case 3:
-            caracter = "images/caracter2.png";
-            break;
-        case 4:
-            caracter = "images/caracter2_H.png";
-            break;
-        case 5:
-            caracter = "images/caracter3.png";
-            break;
-        case 6:
-            caracter = "images/caracter3_H.png";
-            break;
-        case 7:
-            caracter = "images/caracter4.png";
-            break;
-        case 8:
-            caracter = "images/caracter4_H.png";
-            break;
-        case 9:
-            caracter = "images/caracter5.png";
-            break;
-        case 10:
-            caracter = "images/caracter5_H.png";
-            break;
-        case 11:
-            caracter = "images/caracter6.png";
-            break;
-        case 12:
-            caracter = "images/caracter6_H.png";
-            break;
-        case 13:
-            caracter = "images/caracter7.png";
-            break;
-        case 14:
-            caracter = "images/caracter7_H.png";
-            break;
-        case 15:
-            caracter = "images/caracter8.png";
-            break;
-        case 16:
-            caracter = "images/caracter8_H.png";
-            break;
-        case 17:
-            caracter = "images/caracter9.png";
-            break;
-        case 18:
-            caracter = "images/caracter9_H.png";
-            break;
-        case 19:
-            caracter = "images/caracter10.png";
-            break;
-        case 20:
-            caracter = "images/caracter10_H.png";
-            break;
-        case 21:
-            caracter = "images/caracter11.png";
-            break;
-        case 22:
-            caracter = "images/caracter11_H.png";
-            break;
-        case 23:
-            caracter = "images/caracter12.png";
-            break;
-        case 24:
-            caracter = "images/caracter12_H.png";
-            break;
-        case 25:
-            caracter = "images/caracter13.png";
-            break;
-        case 26:
-            caracter = "images/caracter13_H.png";
-            break;
-        case 0:
-            caracter = "images/caracter0.png";
-            break;
-        default:
-            caracter = "images/caracter.png";
-            break;
-    }
-} else if (localStorage.getItem("mundo") == 3) {
-    switch (newArray[0].AVATAR) {
-        case 1:
-            /* caracter = "images/avatarAnimado.gif"; */
-            caracter = "images/caracter.png";
-            break;
-        case 2:
-            caracter = "images/caracter_H.png";
-            break;
-        case 3:
-            caracter = "images/caracter2.png";
-            break;
-        case 4:
-            caracter = "images/caracter2_H.png";
-            break;
-        case 5:
-            caracter = "images/caracter3.png";
-            break;
-        case 6:
-            caracter = "images/caracter3_H.png";
-            break;
-        case 7:
-            caracter = "images/caracter4.png";
-            break;
-        case 8:
-            caracter = "images/caracter4_H.png";
-            break;
-        case 9:
-            caracter = "images/caracter5.png";
-            break;
-        case 10:
-            caracter = "images/caracter5_H.png";
-            break;
-        case 11:
-            caracter = "images/caracter6.png";
-            break;
-        case 12:
-            caracter = "images/caracter6_H.png";
-            break;
-        case 13:
-            caracter = "images/caracter7.png";
-            break;
-        case 14:
-            caracter = "images/caracter7_H.png";
-            break;
-        case 15:
-            caracter = "images/caracter8.png";
-            break;
-        case 16:
-            caracter = "images/caracter8_H.png";
-            break;
-        case 17:
-            caracter = "images/caracter9.png";
-            break;
-        case 18:
-            caracter = "images/caracter9_H.png";
-            break;
-        case 19:
-            caracter = "images/caracter10.png";
-            break;
-        case 20:
-            caracter = "images/caracter10_H.png";
-            break;
-        case 21:
-            caracter = "images/caracter11.png";
-            break;
-        case 22:
-            caracter = "images/caracter11_H.png";
-            break;
-        case 23:
-            caracter = "images/caracter12.png";
-            break;
-        case 24:
-            caracter = "images/caracter12_H.png";
-            break;
-        case 25:
-            caracter = "images/caracter13.png";
-            break;
-        case 26:
-            caracter = "images/caracter13_H.png";
-            break;
-        case 0:
-            caracter = "images/caracter0.png";
-            break;
-        default:
-            caracter = "images/caracter.png";
-            break;
-    }
-}
-
-document.getElementById("caracter").src = caracter;
-
-var estado = "";
-if (newArray[0].FINAL < 6) {
-    estado = "REPROBADO";
-} else {
-    estado = "APROBADO";
-}
-document.getElementById("estado").innerHTML = estado;
-
-var reaccion = "";
-if (newArray[0].FINAL == 0) {
-    reaccion = "images/reaccion_horror.png";
-} else if (newArray[0].FINAL <= 2) {
-    reaccion = "images/reaccion_verguenza.png";
-} else if (newArray[0].FINAL <= 4) {
-    reaccion = "images/reaccion_desepcion.png";
-} else if (newArray[0].FINAL == 5) {
-    reaccion = "images/reaccion_resignacion.png";
-} else if (newArray[0].FINAL < 8) {
-    reaccion = "images/reaccion_esfuerzo.png";
-} else if (newArray[0].FINAL < 10) {
-    reaccion = "images/reaccion_neutral.png";
-} else if (newArray[0].FINAL == 10) {
-    reaccion = "images/reaccion_orgullo.png";
-}
-document.getElementById("reaccion").src = reaccion;
-
-
-var avatar = "";
-var habilidad = "";
-var descripcion = "";
-switch (newArray[0].AVATAR) {
-    case 1:
-        avatar = "images/personaje1.png";
-        /* habilidad = 'Pista en el examen 300<span style="font-family:Poke;font-size:0.6em;">$</span>'; */
-        descripcion = 'Ama la ciudad, su fortaleza es una memoria prodigiosa';
-        break;
-    case 2:
-        avatar = "images/personaje1_H.png";
-        /* habilidad = 'Otro intento 300<span style="font-family:Poke;font-size:0.6em;">$</span>'; */
-        descripcion = 'Imposible de engañar, siempre tiene mucho cuidado';
-        break;
-    case 3:
-        avatar = "images/personaje2.png";
-        /* habilidad = 'Trampa en examen 300<span style="font-family:Poke;font-size:0.6em;">$</span>'; */
-        descripcion = 'Tiene mucho carisma y una envidiable ágilidad';
-        break;
-    case 4:
-        avatar = "images/personaje2_H.png";
-        /* habilidad = 'Entregar un dia después 300<span style="font-family:Poke;font-size:0.6em;">$</span>'; */
-        descripcion = 'No olvida su cabeza porque la tiene pegada al cuello';
-        break;
-    case 5:
-        avatar = "images/personaje3.png";
-        /* habilidad = 'Mas tiempo 300<span style="font-family:Poke;font-size:0.6em;">$</span>'; */
-        descripcion = 'Posee una voz encantadora pero también un carácter fuerte ';
-        break;
-    case 6:
-        avatar = "images/personaje3_H.png";
-        /*  habilidad = 'Escuchar música 300<span style="font-family:Poke;font-size:0.6em;">$</span>'; */
-        descripcion = 'De pocas palabras pero muchas mas acciones';
-        break;
-    case 7:
-        avatar = "images/personaje4.png";
-        /*  habilidad = 'Comer en clase 300<span style="font-family:Poke;font-size:0.6em;">$</span>'; */
-        descripcion = 'Su sigilo y ágilidad le dan una amplia ventaja';
-        break;
-    case 8:
-        avatar = "images/personaje4_H.png";
-        /* habilidad = 'Otro intento 300<span style="font-family:Poke;font-size:0.6em;">$</span>'; */
-        descripcion = 'Muy fuerte, usa correctamente su astucia';
-        break;
-    case 9:
-        avatar = "images/personaje5.png";
-        /* habilidad = 'Trampa en examen 300<span style="font-family:Poke;font-size:0.6em;">$</span>'; */
-        descripcion = 'Tiene una voluntad de hierro al mismo nivel de su rudeza';
-        break;
-    case 10:
-        avatar = "images/personaje5_H.png";
-        /* habilidad = 'Entregar un dia después 300<span style="font-family:Poke;font-size:0.6em;">$</span>'; */
-        descripcion = 'Su mente prodigiosa le permite actuar con rápidez';
-        break;
-    case 11:
-        avatar = "images/personaje6.png";
-        /* habilidad = 'Pista en el examen 300<span style="font-family:Poke;font-size:0.6em;">$</span>'; */
-        descripcion = 'Ama la ciudad, su fortaleza es una memoria prodigiosa';
-        break;
-    case 12:
-        avatar = "images/personaje6_H.png";
-        /* habilidad = 'Mas tiempo 300<span style="font-family:Poke;font-size:0.6em;">$</span>'; */
-        descripcion = 'Su mente prodigiosa le permite actuar con rápidez';
-        break;
-    case 13:
-        avatar = "images/personaje7.png";
-        /* habilidad = 'Escuchar música 300<span style="font-family:Poke;font-size:0.6em;">$</span>'; */
-        descripcion = 'Imposible de engañar, siempre tiene mucho cuidado';
-        break;
-    case 14:
-        avatar = "images/personaje7_H.png";
-        /* habilidad = 'Comer en clase 300<span style="font-family:Poke;font-size:0.6em;">$</span>'; */
-        descripcion = 'Tiene mucho carisma y una envidiable ágilidad';
-        break;
-    case 15:
-        avatar = "images/personaje8.png";
-        /* habilidad = 'Otro intento 300<span style="font-family:Poke;font-size:0.6em;">$</span>'; */
-        descripcion = 'No olvida su cabeza porque la tiene pegada al cuello';
-        break;
-    case 16:
-        avatar = "images/personaje8_H.png";
-        /*  habilidad = 'Trampa en examen 300<span style="font-family:Poke;font-size:0.6em;">$</span>'; */
-        descripcion = 'Posee una voz encantadora pero también un carácter fuerte ';
-        break;
-    case 17:
-        avatar = "images/personaje9.png";
-        /*  habilidad = 'Entregar un dia después 300<span style="font-family:Poke;font-size:0.6em;">$</span>'; */
-        descripcion = 'De pocas palabras pero muchas mas acciones';
-        break;
-    case 18:
-        avatar = "images/personaje9_H.png";
-        /*  habilidad = 'Pista en el examen 300<span style="font-family:Poke;font-size:0.6em;">$</span>'; */
-        descripcion = 'Su sigilo y ágilidad le dan una amplia ventaja';
-        break;
-    case 19:
-        avatar = "images/personaje10.png";
-        /*   habilidad = 'Mas tiempo 300<span style="font-family:Poke;font-size:0.6em;">$</span>'; */
-        descripcion = 'Muy fuerte, usa correctamente su astucia';
-        break;
-    case 20:
-        avatar = "images/personaje10_H.png";
-        /*   habilidad = 'Escuchar música 300<span style="font-family:Poke;font-size:0.6em;">$</span>'; */
-        descripcion = 'Tiene una voluntad de hierro al mismo nivel de su rudeza';
-        break;
-    case 21:
-        avatar = "images/personaje11.png";
-        /*   habilidad = 'Escuchar música 300<span style="font-family:Poke;font-size:0.6em;">$</span>'; */
-        descripcion = 'Su sigilo y ágilidad le dan una amplia ventaja';
-        break;
-    case 22:
-        avatar = "images/personaje11_H.png";
-        /*   habilidad = 'Escuchar música 300<span style="font-family:Poke;font-size:0.6em;">$</span>'; */
-        descripcion = 'De pocas palabras pero muchas mas acciones';
-        break;
-    case 23:
-        avatar = "images/personaje12.png";
-        /*   habilidad = 'Escuchar música 300<span style="font-family:Poke;font-size:0.6em;">$</span>'; */
-        descripcion = 'De pocas palabras pero muchas mas acciones';
-        break;
-    case 24:
-        avatar = "images/personaje12_H.png";
-        /*   habilidad = 'Escuchar música 300<span style="font-family:Poke;font-size:0.6em;">$</span>'; */
-        descripcion = 'No olvida su cabeza porque la tiene pegada al cuello';
-        break;
-    case 25:
-        avatar = "images/personaje13.png";
-        /*   habilidad = 'Escuchar música 300<span style="font-family:Poke;font-size:0.6em;">$</span>'; */
-        descripcion = 'Tiene una voluntad de hierro al mismo nivel de su rudeza';
-        break;
-    case 26:
-        avatar = "images/personaje13_H.png";
-        /*   habilidad = 'Escuchar música 300<span style="font-family:Poke;font-size:0.6em;">$</span>'; */
-        descripcion = 'Tiene mucho carisma y una envidiable ágilidad';
-        break;
-    case 0:
-        avatar = "images/personaje0.png";
-        /*   habilidad = 'Comer en clase 300<span style="font-family:Poke;font-size:0.6em;">$</span>'; */
-        descripcion = 'Único';
-        break;
-    default:
-        break;
-}
-document.getElementById("avatar").src = avatar;
-/* document.getElementById("habilidad3").innerHTML = '<img class="habilidad"  src="images/habilidad3.png" /> ' + habilidad; */
-document.getElementById("descripcion").innerHTML = descripcion;
+    document.getElementById("avatar").src = avatar;
+    /* document.getElementById("habilidad3").innerHTML = '<img class="habilidad"  src="images/habilidad3.png" /> ' + habilidad; */
+    document.getElementById("descripcion").innerHTML = descripcion;
 
 
 }
