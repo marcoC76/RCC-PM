@@ -337,10 +337,10 @@ function recibir() {
                         <br>
                         <div class="abilities " >
                             <center>
-                                <h2 class="name" onclick="asisInfo();" >
+                                <!-- <h2 class="name" onclick="asisInfo();" >
                                     Quemado:
                                     </h2>
-                                   <canvas id="quemado" width="100%" height="70hv"></canvas>
+                                   <canvas id="quemado" width="100%" height="70hv"></canvas> -->
                             </center>
                                     <h4 style="text-align: right">Pendientes: ${newArray[0].DIA12}</h4>
                                 
