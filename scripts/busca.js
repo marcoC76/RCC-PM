@@ -367,7 +367,7 @@ function recibir() {
                                    
                             </center>
                                 <div class="meter negro" id="">
-                                    <span class="animate" style="width: ${(parseInt(newArray[0].TOTALASIS) * 100) / 12}%"></span>
+                                    <span class="animate" style="width: ${(parseInt(newArray[0].TOTALASIS) * 100) / 8}%"></span>
                                 </div>
                                 <br>
                                 <center>
@@ -1082,71 +1082,18 @@ function recibir() {
 
     var ctx = document.getElementById("quemado");
     var quemado = new Chart(ctx, {
-        type: 'line',
+        type: 'pie',
         data: {
-            labels: ["Día1", "Día2", "Día3", "Día4", "Día5", "Día6", "Día7", "Día8", "Día9", "Día10", "Día11", "Día12"],
+            labels: ["Terminados", "Pendientes"],
             datasets: [{
-
-                label: 'Pendientes',
-                data: [newArray[0].DIA1, newArray[0].DIA2, newArray[0].DIA3, newArray[0].DIA4, newArray[0].DIA5, newArray[0].DIA6, newArray[0].DIA7, newArray[0].DIA8, newArray[0].DIA9, newArray[0].DIA10, newArray[0].DIA11, newArray[0].DIA12],
-                "fill": false,
-                "borderColor": "rgb(0, 255, 246)",
-                "lineTension": 0.1,
+                label: 'Cantidad',
+                data: [10 - newArray[0].DIA12, newArray[0].DIA12],
                 backgroundColor: [
-                    'rgba(0, 195, 255,0.6)',
-                    'rgba(0, 199, 255,0.6)',
-                    'rgba(0, 216, 255,0.6)',
-                    'rgba(0, 220, 255,0.6)',
-                    'rgba(0, 225, 255,0.6)',
-                    'rgba(0, 229, 255,0.6)',
-                    'rgba(0, 233, 255,0.6)',
-                    'rgba(0, 242, 255,0.6)',
-                    'rgba(0, 246, 255,0.6)',
-                    'rgba(0, 250, 255,0.6)',
-                    'rgba(0, 255, 255,0.6)',
-                    'rgba(0, 255, 246,0.6)'
+                    'rgba(69, 242, 69, 0.6)',
+                    'rgba(43, 43, 43, 0.6)'
+
                 ]
-            },
-            {
-
-                label: 'Media',
-                data: [9, 8.25, 7.5, 6.75, 6, 5.25, 4.5, 3.75, 3, 2.25, 1.5, 0.75],
-                "fill": false,
-                "borderColor": "rgb(214, 45, 9)",
-                "lineTension": 0.1,
-                "pointBackgroundColor": 'rgba(0,0,0,0)',
-                "pointBorderColor": 'rgba(0,0,0,0)',
-                backgroundColor: [
-                    'rgba(255, 80, 0, 0.6)',
-                    'rgba(255, 76, 0, 0.6)',
-                    'rgba(255, 63, 0, 0.6)',
-                    'rgba(255, 59, 0, 0.6)',
-                    'rgba(255, 55, 0, 0.6)',
-                    'rgba(255, 51, 0, 0.6)',
-                    'rgba(255, 38, 0, 0.6)',
-                    'rgba(255, 34, 0, 0.6)',
-                    'rgba(255, 29, 0, 0.6)',
-                    'rgba(255, 21, 0, 0.6)',
-                    'rgba(255, 17, 0, 0.6)',
-                    'rgba(255, 12, 0, 0.6)'
-                ]
-            }
-
-            ]
-        },
-        options: {
-
-            scales: {
-                xAxes: [{
-                    ticks: {
-                        suggestedMin: 0,
-                        suggestedMax: 10,
-                        stepSize: 0.1
-                    }
-                }]
-            }
-
-
+            }]
         }
     });
 
